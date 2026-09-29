@@ -1,1 +1,279 @@
-<p>register-component works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Crear cuenta | Doc-Tooth</title>
+
+</head>
+
+<body>
+
+<section>
+  <app-navbar-component/>
+</section>
+
+<main class="register-page">
+
+  <!-- Elementos decorativos del fondo -->
+  <div class="background-decoration decoration-one"></div>
+  <div class="background-decoration decoration-two"></div>
+
+
+  <!-- Tarjeta de registro -->
+  <section class="register-card">
+
+    <!-- Encabezado -->
+    <header class="register-header">
+
+      <h1>Crear cuenta en Doc-Tooth</h1>
+
+      <p>
+        Gestión Odontológica Integral
+      </p>
+
+    </header>
+
+
+    <!-- Separador -->
+    <div class="separator"></div>
+
+
+    <!-- Formulario -->
+    <form class="register-form">
+
+
+      <!-- =========================================
+           NOMBRES
+           ========================================= -->
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="fullName">
+            Nombres y apellidos
+          </label>
+
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Ingresa tu nombre completo"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <!-- DOCUMENTO -->
+
+        <div class="form-group">
+
+          <label for="document">
+            Documento / identificación
+          </label>
+
+          <input
+            type="text"
+            id="document"
+            name="document"
+            inputmode="numeric"
+            pattern="[0-9]+"
+            maxlength="15"
+            placeholder="Número de documento"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================================
+           CORREO Y TELÉFONO
+           ========================================= -->
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="email">
+            Correo electrónico
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="correo@ejemplo.com"
+            autocomplete="email"
+          >
+
+        </div>
+
+
+        <!-- TELÉFONO -->
+
+        <div class="form-group">
+
+          <label for="phone">
+            Teléfono / celular
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+57 300 123 4567"
+            autocomplete="tel"
+            inputmode="tel"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================================
+           CONTRASEÑAS
+           ========================================= -->
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="password">
+            Contraseña
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Ingresa una contraseña"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <!-- CONFIRMAR CONTRASEÑA -->
+
+        <div class="form-group">
+
+          <label for="confirmPassword">
+            Confirmar contraseña
+          </label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Repite tu contraseña"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+      </div>
+
+      <!-- =========================================
+           AUTORIZACIONES
+           ========================================= -->
+
+      <div class="agreements">
+
+        <!-- Términos -->
+
+        <label class="agreement">
+
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+          >
+
+          <span>
+                            Acepto los
+                            <a href="#" class="agreement-link">
+                                Términos de Servicio
+                            </a>
+                            y
+                            <a href="#" class="agreement-link">
+                                Políticas de Privacidad
+                            </a>
+                        </span>
+
+        </label>
+
+
+        <!-- Datos personales -->
+
+        <label class="agreement">
+
+          <input
+            type="checkbox"
+            id="dataTreatment"
+            name="dataTreatment"
+            required
+          >
+
+          <span>
+                            Autorizo el tratamiento de mis
+                            datos personales (Habeas Data)
+                        </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- =========================================
+           BOTÓN
+           ========================================= -->
+
+      <button
+        type="submit"
+        class="register-button"
+      >
+        Completar registro
+      </button>
+
+    </form>
+
+
+    <!-- =========================================
+         LOGIN
+         ========================================= -->
+
+    <div class="login-section">
+
+      <div class="separator"></div>
+
+      <p>
+        ¿Ya tienes una cuenta?
+      </p>
+
+      <a
+        href="/authentication/login"
+        class="login-link"
+      >
+        Inicia sesión
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+
+</html>

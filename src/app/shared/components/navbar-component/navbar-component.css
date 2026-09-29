@@ -1,0 +1,189 @@
+/* =========================================================
+   PALETA - FUNCTIONAL LIGHT BLUE GRADIENT
+
+   #5A85A9
+   #6D98BA
+   #80ABC9
+   #93BDD8
+   #A6D0E7
+   ========================================================= */
+
+
+/* =========================================================
+   MENÚ SUPERIOR
+   ========================================================= */
+
+.top-menu {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.96);
+
+  border-bottom: 1px solid rgba(90, 133, 169, 0.15);
+
+  box-shadow:
+    0 3px 15px rgba(48, 91, 115, 0.08);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.top-menu-container {
+
+  width: min(1200px, 90%);
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   ENLACE DE INICIO
+   ========================================================= */
+
+.home-link {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 13px;
+
+  border-radius: 9px;
+
+  color: #5A85A9;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================================
+   ICONO
+   ========================================================= */
+
+.home-icon {
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #5A85A9;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.home-icon svg {
+
+  width: 22px;
+  height: 22px;
+
+  display: block;
+}
+
+
+/* =========================================================
+   TEXTO
+   ========================================================= */
+
+.home-text {
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.home-link:hover {
+
+  background-color: #EAF4F9;
+
+  color: #305B73;
+}
+
+
+.home-link:hover .home-icon {
+
+  color: #305B73;
+
+  transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
+
+.home-link:focus-visible {
+
+  outline: 2px solid #80ABC9;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .top-menu {
+
+    height: 60px;
+  }
+
+
+  .top-menu-container {
+
+    width: 92%;
+  }
+
+
+  .home-link {
+
+    padding: 8px 10px;
+
+    font-size: 0.85rem;
+  }
+
+}
