@@ -1,0 +1,432 @@
+/* =========================================================
+   PALETA - FUNCTIONAL LIGHT BLUE GRADIENT
+
+   #5A85A9
+   #6D98BA
+   #80ABC9
+   #93BDD8
+   #A6D0E7
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+
+body {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #305B73;
+
+  background-color: #ffffff;
+}
+
+
+/* =========================================================
+   PÁGINA
+   ========================================================= */
+
+.home-page {
+
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding:
+    40px
+    25px
+    60px;
+
+  background-color: #ffffff;
+
+
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.profile-container {
+
+  width: min(900px, 100%);
+
+  height: min(900px, 100%);
+
+  padding: 50px 20px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #E1EEF4;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 40px rgba(48, 91, 115, 0.08);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.profile-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   ICONO DEL USUARIO
+   ========================================================= */
+
+.profile-icon {
+
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5A85A9,
+      #80ABC9
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 18px rgba(90, 133, 169, 0.20);
+}
+
+
+.profile-icon svg {
+
+  width: 29px;
+  height: 29px;
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.profile-title h1 {
+
+  color: #305B73;
+
+  font-size: 1.65rem;
+
+  font-weight: 600;
+
+  letter-spacing: -0.3px;
+}
+
+
+.profile-title p {
+
+  margin-top: 5px;
+
+  color: #6D8A9B;
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   SEPARADOR
+   ========================================================= */
+
+.section-separator {
+
+  width: 100%;
+  height: 1px;
+
+  margin: 30px 0;
+
+  background:
+    linear-gradient(
+      to right,
+      #A6D0E7,
+      #E1EEF4,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   GRID DE INFORMACIÓN
+   ========================================================= */
+
+.information-grid {
+
+  display: grid;
+
+  grid-template-columns:
+        repeat(2, 1fr);
+
+  gap: 22px 25px;
+}
+
+
+/* =========================================================
+   CAMPO
+   ========================================================= */
+
+.information-field {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.information-field label {
+
+  color: #467185;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CAMPOS NO EDITABLES
+   ========================================================= */
+
+.field-value {
+
+  min-height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    0 14px;
+
+  border: 1px solid #E1EEF4;
+
+  border-radius: 9px;
+
+  background-color: #F7FBFD;
+
+  color: #305B73;
+
+  font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   CAMPOS EDITABLES
+   ========================================================= */
+
+.editable-field {
+
+  position: relative;
+
+  width: 100%;
+}
+
+
+.editable-field input {
+
+  width: 100%;
+
+  height: 45px;
+
+  padding:
+    0 42px
+    0 14px;
+
+  border: 1.5px solid #A6D0E7;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: #ffffff;
+
+  color: #305B73;
+
+  font-family: inherit;
+
+  font-size: 0.88rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.editable-field input:hover {
+
+  border-color: #80ABC9;
+}
+
+
+.editable-field input:focus {
+
+  border-color: #5A85A9;
+
+  box-shadow:
+    0 0 0 3px rgba(128, 171, 201, 0.18);
+}
+
+
+/* =========================================================
+   ICONO DE EDICIÓN
+   ========================================================= */
+
+.edit-icon {
+
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #5A85A9;
+
+  pointer-events: none;
+}
+
+
+.edit-icon svg {
+
+  width: 17px;
+  height: 17px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .home-page {
+
+    padding:
+      100px
+      18px
+      40px;
+  }
+
+
+  .profile-container {
+
+    padding:
+      32px 25px;
+  }
+
+
+  .information-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .home-page {
+
+    padding:
+      90px
+      12px
+      30px;
+  }
+
+
+  .profile-container {
+
+    padding:
+      27px 20px;
+
+    border-radius: 16px;
+  }
+
+
+  .profile-header {
+
+    gap: 13px;
+  }
+
+
+  .profile-icon {
+
+    width: 47px;
+    height: 47px;
+
+    border-radius: 12px;
+  }
+
+
+  .profile-icon svg {
+
+    width: 25px;
+    height: 25px;
+  }
+
+
+  .profile-title h1 {
+
+    font-size: 1.35rem;
+  }
+
+
+  .profile-title p {
+
+    font-size: 0.78rem;
+  }
+
+}

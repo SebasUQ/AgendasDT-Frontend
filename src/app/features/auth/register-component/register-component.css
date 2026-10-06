@@ -55,7 +55,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: 40px 20px;
+  padding: 90px 20px;
 
   overflow: hidden;
 
@@ -138,6 +138,10 @@ body {
 /* =========================================================
    ENCABEZADO
    ========================================================= */
+
+.header {
+  padding-top: 35px;
+}
 
 .register-header {
 

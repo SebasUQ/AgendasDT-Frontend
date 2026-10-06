@@ -1,61 +1,72 @@
-<!-- =========================================================
-     MENÚ SUPERIOR
-     Componente compartido entre Login y Registro
-     ========================================================= -->
+<header class="top-navbar">
 
-<header class="top-menu">
+  <div class="navbar-container">
 
-  <nav class="top-menu-container">
+    <!-- =====================================================
+         LOGO
+         ===================================================== -->
 
     <a
-      href=""
-      class="home-link"
+      routerLink=""
+      class="brand"
       aria-label="Ir a la página inicial"
     >
 
-      <!-- Icono de inicio -->
-      <span class="home-icon" aria-hidden="true">
+      <img
+        src="/logo.svg"
+        alt="Doc-Tooth"
+        class="brand-logo"
+      >
 
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-
-                    <path
-                      d="M3 10.5L12 3L21 10.5"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-
-                    <path
-                      d="M5.5 9.5V20H18.5V9.5"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                    />
-
-                    <path
-                      d="M9.5 20V14H14.5V20"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                    />
-
-                </svg>
-
-            </span>
-
-
-      <!-- Texto -->
-      <span class="home-text">
-                Página inicial
-            </span>
+      <div class="logo-text">
+        <strong>AGENDAS</strong>
+        <span>DOC-TOOTH</span>
+      </div>
 
     </a>
 
-  </nav>
+
+    <!-- =====================================================
+         NAVEGACIÓN
+         ===================================================== -->
+
+    <nav class="navigation">
+
+      <a
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/acerca-de"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Acerca de
+      </a>
+
+      <a
+        routerLink="/objetivos"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Objetivos
+      </a>
+
+      <a
+        routerLink="/contacto"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        Contacto
+      </a>
+
+    </nav>
+
+  </div>
 
 </header>

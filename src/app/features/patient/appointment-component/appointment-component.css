@@ -1,0 +1,1164 @@
+/* =========================================================
+   AGENDAR CITA
+   DOC-TOOTH
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:host {
+
+  --blue-dark: #305B73;
+  --blue-main: #3E6985;
+  --blue: #5A85A9;
+  --blue-light: #80ABC9;
+  --blue-pale: #EAF4F9;
+  --blue-soft: #F4F9FC;
+
+  --border: #D5E6EF;
+
+  --text: #305B73;
+  --text-light: #678495;
+
+  --danger: #C96B6B;
+
+  display: block;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.appointment-page {
+
+  min-height: calc(100vh - 68px);
+
+  padding:
+    35px
+    40px
+    50px;
+
+  box-sizing: border-box;
+
+  background-color: #ffffff;
+
+  color: var(--text);
+
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.page-header {
+
+  margin-bottom: 28px;
+}
+
+
+.page-header h1 {
+
+  margin: 0;
+
+  color: var(--blue-dark);
+
+  font-size: 1.9rem;
+
+  font-weight: 600;
+
+  letter-spacing: -0.4px;
+}
+
+
+.page-header p {
+
+  margin:
+    7px
+    0
+    0;
+
+  color: var(--text-light);
+
+  font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   ========================================================= */
+
+.appointment-layout {
+
+  display: grid;
+
+  grid-template-columns:
+        minmax(0, 1fr)
+        350px;
+
+  gap: 25px;
+
+  max-width: 1350px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   COLUMNA DEL FORMULARIO
+   ========================================================= */
+
+.appointment-form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.appointment-card {
+
+  padding: 24px;
+
+  background-color: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 18px rgba(48, 91, 115, 0.06);
+}
+
+
+/* =========================================================
+   TÍTULO DE SECCIÓN
+   ========================================================= */
+
+.section-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 22px;
+}
+
+
+.step-number {
+
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: var(--blue);
+
+  color: #ffffff;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+}
+
+
+.section-title h2 {
+
+  margin: 0;
+
+  color: var(--blue-dark);
+
+  font-size: 1rem;
+
+  font-weight: 600;
+}
+
+
+.section-title p {
+
+  margin:
+    3px
+    0
+    0;
+
+  color: var(--text-light);
+
+  font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   FORMULARIOS
+   ========================================================= */
+
+.form-grid {
+
+  display: grid;
+
+  gap: 18px;
+}
+
+
+.two-columns {
+
+  grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+}
+
+
+.form-group {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.form-group label {
+
+  color: var(--blue-dark);
+
+  font-size: 0.76rem;
+
+  font-weight: 600;
+}
+
+
+.form-group input,
+.form-group select {
+
+  width: 100%;
+
+  height: 42px;
+
+  box-sizing: border-box;
+
+  padding:
+    0
+    12px;
+
+  border: 1px solid #C9DDE8;
+
+  border-radius: 8px;
+
+  background-color: #ffffff;
+
+  color: #365D71;
+
+  font-family: inherit;
+
+  font-size: 0.8rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.form-group input::placeholder {
+
+  color: #9AAEB9;
+}
+
+
+.form-group input:hover,
+.form-group select:hover {
+
+  border-color: var(--blue-light);
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+  border-color: var(--blue);
+
+  background-color: #FBFDFF;
+
+  box-shadow:
+    0 0 0 3px rgba(128, 171, 201, 0.16);
+}
+
+
+/* =========================================================
+   CALENDARIO + HORARIOS
+   ========================================================= */
+
+.schedule-layout {
+
+  display: grid;
+
+  grid-template-columns:
+        285px
+        minmax(0, 1fr);
+
+  gap: 25px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   CALENDARIO
+   ========================================================= */
+
+.calendar-container {
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background-color: var(--blue-soft);
+}
+
+
+.calendar-header {
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    0
+    10px;
+
+  background-color: var(--blue);
+
+  color: #ffffff;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+}
+
+
+.calendar-arrow {
+
+  width: 27px;
+  height: 27px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: rgba(255, 255, 255, 0.14);
+
+  color: #ffffff;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease;
+}
+
+
+.calendar-arrow:hover {
+
+  background-color: rgba(255, 255, 255, 0.27);
+}
+
+
+/* =========================================================
+   DÍAS DE LA SEMANA
+   ========================================================= */
+
+.calendar-weekdays {
+
+  display: grid;
+
+  grid-template-columns:
+        repeat(7, 1fr);
+
+  padding:
+    10px
+    7px
+    5px;
+
+  color: var(--text-light);
+
+  font-size: 0.63rem;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   DÍAS
+   ========================================================= */
+
+.calendar-days {
+
+  display: grid;
+
+  grid-template-columns:
+        repeat(7, 1fr);
+
+  gap: 3px;
+
+  padding:
+    3px
+    7px
+    10px;
+}
+
+
+.day {
+
+  width: 100%;
+
+  aspect-ratio: 1;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: transparent;
+
+  color: #547284;
+
+  font-family: inherit;
+
+  font-size: 0.67rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+
+.day:hover {
+
+  background-color: #DDEEF6;
+
+  color: var(--blue-dark);
+}
+
+
+.day.selected {
+
+  background-color: var(--blue);
+
+  color: #ffffff;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 3px 7px rgba(90, 133, 169, 0.25);
+}
+
+
+.day.empty {
+
+  cursor: default;
+}
+
+
+/* =========================================================
+   HORARIOS
+   ========================================================= */
+
+.available-times {
+
+  min-width: 0;
+}
+
+
+.available-times h3 {
+
+  margin: 2px 0 4px;
+
+  color: var(--blue-dark);
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+
+.selected-date {
+
+  margin:
+    0
+    0
+    16px;
+
+  color: var(--text-light);
+
+  font-size: 0.72rem;
+}
+
+
+.time-grid {
+
+  display: grid;
+
+  grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+
+.time-button {
+
+  min-height: 39px;
+
+  border: 1px solid #C9DDE8;
+
+  border-radius: 8px;
+
+  background-color: #ffffff;
+
+  color: var(--blue-dark);
+
+  font-family: inherit;
+
+  font-size: 0.73rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.time-button:hover {
+
+  border-color: var(--blue-light);
+
+  background-color: var(--blue-pale);
+}
+
+
+.time-button.selected {
+
+  border-color: var(--blue);
+
+  background-color: var(--blue);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 3px 8px rgba(90, 133, 169, 0.2);
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE LA CITA
+   ========================================================= */
+
+.appointment-info {
+
+  margin-top: 18px;
+
+  padding:
+    12px
+    13px;
+
+  border-radius: 8px;
+
+  background-color: var(--blue-pale);
+
+  color: var(--text-light);
+
+  font-size: 0.69rem;
+
+  line-height: 1.7;
+}
+
+
+.appointment-info strong {
+
+  color: var(--blue-dark);
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.checkbox-container {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  margin-top: 20px;
+
+  color: var(--text-light);
+
+  font-size: 0.73rem;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+
+.checkbox-container input {
+
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+
+  margin-top: 1px;
+
+  accent-color: var(--blue);
+}
+
+
+/* =========================================================
+   PANEL RESUMEN
+   ========================================================= */
+
+.appointment-summary {
+
+  align-self: start;
+
+  padding: 25px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #F8FCFE 0%,
+      #EEF7FB 100%
+    );
+
+  box-shadow:
+    0 7px 22px rgba(48, 91, 115, 0.08);
+}
+
+
+/* =========================================================
+   CABECERA RESUMEN
+   ========================================================= */
+
+.summary-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.summary-icon {
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background-color: #DDEEF6;
+
+  color: var(--blue);
+}
+
+
+.summary-icon svg {
+
+  width: 22px;
+  height: 22px;
+}
+
+
+.summary-header h2 {
+
+  margin: 0;
+
+  color: var(--blue-dark);
+
+  font-size: 1.15rem;
+
+  font-weight: 600;
+}
+
+
+.summary-header p {
+
+  margin:
+    3px
+    0
+    0;
+
+  color: var(--text-light);
+
+  font-size: 0.69rem;
+}
+
+
+/* =========================================================
+   DETALLES
+   ========================================================= */
+
+.summary-details {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding:
+    21px
+    0;
+}
+
+
+.summary-item {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.summary-label {
+
+  color: #79919E;
+
+  font-size: 0.68rem;
+
+  font-weight: 500;
+}
+
+
+.summary-value {
+
+  color: var(--blue-dark);
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   PRECIO
+   ========================================================= */
+
+.summary-price {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    14px;
+
+  border-radius: 9px;
+
+  background-color: #ffffff;
+
+  border: 1px solid var(--border);
+}
+
+
+.summary-price span {
+
+  color: var(--text-light);
+
+  font-size: 0.72rem;
+}
+
+
+.summary-price strong {
+
+  color: var(--blue-dark);
+
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   BOTÓN CONFIRMAR
+   ========================================================= */
+
+.confirm-button {
+
+  width: 100%;
+
+  min-height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding:
+    0
+    15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background-color: var(--blue);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(90, 133, 169, 0.2);
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.confirm-button svg {
+
+  width: 18px;
+  height: 18px;
+}
+
+
+.confirm-button:hover {
+
+  background-color: var(--blue-main);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 15px rgba(90, 133, 169, 0.28);
+}
+
+
+.confirm-button:active {
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   AVISO
+   ========================================================= */
+
+.confirmation-notice {
+
+  margin-top: 18px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid var(--border);
+}
+
+
+.confirmation-notice strong {
+
+  color: var(--blue-dark);
+
+  font-size: 0.73rem;
+}
+
+
+.confirmation-notice p {
+
+  margin:
+    5px
+    0
+    0;
+
+  color: var(--text-light);
+
+  font-size: 0.68rem;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .appointment-layout {
+
+    grid-template-columns:
+            minmax(0, 1fr)
+            310px;
+  }
+
+
+  .schedule-layout {
+
+    grid-template-columns:
+            250px
+            minmax(0, 1fr);
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .appointment-layout {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .appointment-summary {
+
+    order: -1;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .appointment-page {
+
+    padding:
+      25px
+      18px
+      40px;
+  }
+
+
+  .page-header h1 {
+
+    font-size: 1.55rem;
+  }
+
+
+  .two-columns {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .schedule-layout {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .calendar-container {
+
+    max-width: 340px;
+  }
+
+
+  .appointment-card {
+
+    padding: 18px;
+  }
+
+
+  .appointment-summary {
+
+    padding: 20px;
+  }
+
+  /* =========================================================
+   INFORMACIÓN DEL USUARIO
+   ========================================================= */
+
+  .user-information-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+
+  .user-data {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    min-height: 58px;
+
+    padding:
+      11px
+      13px;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background-color: var(--blue-soft);
+  }
+
+
+  .data-label {
+
+    color: #79919E;
+
+    font-size: 0.68rem;
+
+    font-weight: 500;
+  }
+
+
+  .data-value {
+
+    color: var(--blue-dark);
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =========================================================
+     BOTÓN DESHABILITADO
+     ========================================================= */
+
+  .confirm-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+  }
+
+
+  .confirm-button:disabled:hover {
+
+    background-color: var(--blue);
+
+    transform: none;
+
+    box-shadow: none;
+  }
+
+
+  /* =========================================================
+     CALENDARIO
+     ========================================================= */
+
+  .day.empty {
+
+    pointer-events: none;
+
+    background-color: transparent;
+  }
+
+
+  .day {
+
+    cursor: pointer;
+  }
+
+
+  .day:focus-visible,
+  .time-button:focus-visible {
+
+    outline: 2px solid var(--blue-light);
+
+    outline-offset: 2px;
+  }
+
+
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+
+  @media (max-width: 650px) {
+
+    .user-information-grid {
+
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+}

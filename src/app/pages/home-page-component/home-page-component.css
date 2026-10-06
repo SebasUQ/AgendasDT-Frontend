@@ -14,14 +14,9 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: #305B73;
-  background-color: #ffffff;
-}
-
-.logo img {
-  width: 160px;
-  height: auto;
-  display: block;
+  background-image: url("/fondo.jpg");
+  background-size: cover;
+  margin: 0;
 }
 
 /* =========================================
@@ -45,16 +40,6 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      #5A85A9 0%,
-      #6D98BA 25%,
-      #80ABC9 50%,
-      #93BDD8 75%,
-      #A6D0E7 100%
-    );
 }
 
 
@@ -80,61 +65,6 @@ body {
   padding-top: 35px;
 }
 
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.logo img {
-  width: 150px;
-  height: auto;
-  display: block;
-}
-
-/* Icono provisional del logo */
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 2px solid #ffffff;
-  border-radius: 8px;
-
-  font-size: 22px;
-  font-weight: bold;
-}
-
-
-/* Texto del logo */
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-
-  line-height: 1;
-  letter-spacing: 2px;
-}
-
-.logo-text strong {
-  font-size: 16px;
-}
-
-.logo-text span {
-  margin-top: 4px;
-
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-
 /* =========================================
    CONTENIDO DEL HERO
    ========================================= */
@@ -148,7 +78,7 @@ body {
 
   gap: 60px;
 
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 
 
@@ -256,11 +186,12 @@ body {
    ========================================= */
 
 .hero-image {
-  width: 30%;
+  width: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 
@@ -277,10 +208,12 @@ body {
   display: block;
 
   width: 100%;
-  max-width: 550px;
+  max-width: 1500px;
   height: auto;
 
   object-fit: contain;
+
+  padding-top: 40px;
 
   filter:
     drop-shadow(
@@ -314,52 +247,6 @@ body {
   z-index: 3;
 }
 
-
-/* =========================================
-   BOTÓN PARA BAJAR
-   ========================================= */
-
-.scroll-button {
-  position: absolute;
-
-  left: 50%;
-  top: -30px;
-
-  transform: translateX(-50%);
-
-  width: 46px;
-  height: 46px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  border: 1px solid #80ABC9;
-
-  background-color: #ffffff;
-
-  color: #5A85A9;
-
-  text-decoration: none;
-
-  font-size: 24px;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.scroll-button:hover {
-  background-color: #5A85A9;
-  color: #ffffff;
-
-  transform: translateX(-50%) translateY(-3px);
-}
-
-
 /* =========================================
    SEGUNDA SECCIÓN
    ========================================= */
@@ -379,24 +266,6 @@ body {
 
   background-color: #ffffff;
 }
-
-.content-section h2 {
-  color: #5A85A9;
-
-  font-size: 2.5rem;
-
-  margin-bottom: 20px;
-}
-
-.content-section p {
-  max-width: 600px;
-
-  color: #467185;
-
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
 
 /* =========================================
    RESPONSIVE

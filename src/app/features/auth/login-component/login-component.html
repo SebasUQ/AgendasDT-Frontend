@@ -11,16 +11,15 @@
 
 <body>
 
-<section>
-  <app-navbar-component/>
-</section>
-
 <main class="login-page">
 
   <!-- Decoración del fondo -->
   <div class="background-decoration decoration-one"></div>
   <div class="background-decoration decoration-two"></div>
 
+  <header class="header">
+    <app-navbar-component/>
+  </header>
 
   <!-- Tarjeta de inicio de sesión -->
   <section class="login-card">
@@ -106,6 +105,7 @@
       <button
         type="submit"
         class="login-button"
+        [routerLink]="['patient-dashboard/home']"
       >
         Iniciar sesión
       </button>

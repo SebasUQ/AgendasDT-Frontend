@@ -10,10 +10,11 @@
 
 
 /* =========================================================
-   MENÚ SUPERIOR
+   BARRA PRINCIPAL
    ========================================================= */
 
-.top-menu {
+.top-navbar {
+
   position: fixed;
 
   top: 0;
@@ -22,20 +23,15 @@
   z-index: 1000;
 
   width: 100%;
-  height: 50px;
+  height: 72px;
 
-  display: flex;
+  background: transparent;
 
-  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 
-  background-color: rgba(255, 255, 255, 0.96);
-
-  border-bottom: 1px solid rgba(90, 133, 169, 0.15);
-
-  box-shadow:
-    0 3px 15px rgba(48, 91, 115, 0.08);
-
-  backdrop-filter: blur(8px);
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 
@@ -43,41 +39,120 @@
    CONTENEDOR
    ========================================================= */
 
-.top-menu-container {
+.navbar-container {
 
-  width: min(1200px, 90%);
+  width: min(1200px, 92%);
+
+  height: 100%;
 
   margin: 0 auto;
 
   display: flex;
 
   align-items: center;
+
+  justify-content: space-between;
 }
 
 
 /* =========================================================
-   ENLACE DE INICIO
+   LOGO
    ========================================================= */
 
-.home-link {
+.brand {
 
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
-  gap: 10px;
+  text-decoration: none;
 
-  padding: 8px 13px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
 
-  border-radius: 9px;
 
-  color: #5A85A9;
+.brand:hover {
+
+  opacity: 0.88;
+
+  transform: translateY(-1px);
+}
+
+
+.brand-logo {
+
+  width: 60px;
+
+  height: auto;
+
+  display: block;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.logo-text strong {
+  font-size: 16px;
+}
+
+.logo-text span {
+  margin-top: 4px;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+.navigation {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   ENLACES
+   ========================================================= */
+
+.nav-link {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding: 0 16px;
+
+  border-radius: 22px;
+
+  color: #ffffff;
+
+  font-size: 0.88rem;
+
+  font-weight: 500;
 
   text-decoration: none;
 
-  font-size: 0.9rem;
-
-  font-weight: 600;
+  white-space: nowrap;
 
   transition:
     background-color 0.2s ease,
@@ -87,77 +162,67 @@
 
 
 /* =========================================================
-   ICONO
-   ========================================================= */
-
-.home-icon {
-
-  width: 24px;
-  height: 24px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  color: #5A85A9;
-
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-.home-icon svg {
-
-  width: 22px;
-  height: 22px;
-
-  display: block;
-}
-
-
-/* =========================================================
-   TEXTO
-   ========================================================= */
-
-.home-text {
-
-  line-height: 1;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
    HOVER
    ========================================================= */
 
-.home-link:hover {
+.nav-link:hover {
 
-  background-color: #EAF4F9;
+  background-color: rgba(255, 255, 255, 0.15);
 
-  color: #305B73;
-}
-
-
-.home-link:hover .home-icon {
-
-  color: #305B73;
-
-  transform: translateX(-2px);
+  color: #ffffff;
 }
 
 
 /* =========================================================
-   ACCESIBILIDAD
+   ENLACE ACTIVO
    ========================================================= */
 
-.home-link:focus-visible {
+.nav-link.active {
 
-  outline: 2px solid #80ABC9;
+  background-color: rgba(255, 255, 255, 0.95);
 
-  outline-offset: 2px;
+  color: #467185;
+
+  box-shadow:
+    0 4px 12px rgba(48, 91, 115, 0.12);
+}
+
+
+/* =========================================================
+   HOVER DEL ACTIVO
+   ========================================================= */
+
+.nav-link.active:hover {
+
+  background-color: #ffffff;
+
+  color: #305B73;
+
+  transform: translateY(-1px);
+}
+
+.top-navbar.light {
+  background-color: rgba(255, 255, 255, 0.92);
+
+  border-bottom:
+    1px solid rgba(90, 133, 169, 0.15);
+
+  box-shadow:
+    0 3px 15px rgba(48, 91, 115, 0.08);
+}
+
+.top-navbar.light .nav-link {
+  color: #467185;
+}
+
+.top-navbar.light .nav-link:hover {
+  background-color: #EAF4F9;
+  color: #305B73;
+}
+
+.top-navbar.light .nav-link.active {
+  background-color: #5A85A9;
+  color: #ffffff;
 }
 
 
@@ -165,25 +230,79 @@
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 500px) {
+@media (max-width: 750px) {
 
-  .top-menu {
+  .top-navbar {
 
-    height: 60px;
+    height: 64px;
   }
 
 
-  .top-menu-container {
+  .navbar-container {
 
-    width: 92%;
+    width: 94%;
   }
 
 
-  .home-link {
+  .brand-logo {
 
-    padding: 8px 10px;
+    width: 125px;
+  }
 
-    font-size: 0.85rem;
+
+  .navigation {
+
+    gap: 2px;
+  }
+
+
+  .nav-link {
+
+    padding: 0 10px;
+
+    font-size: 0.78rem;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .brand-logo {
+
+    width: 105px;
+  }
+
+
+  .navigation {
+
+    gap: 0;
+  }
+
+
+  .nav-link {
+
+    padding: 0 7px;
+
+    font-size: 0.72rem;
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .brand-logo {
+
+    width: 90px;
+  }
+
+
+  .nav-link {
+
+    padding: 0 5px;
+
+    font-size: 0.68rem;
   }
 
 }

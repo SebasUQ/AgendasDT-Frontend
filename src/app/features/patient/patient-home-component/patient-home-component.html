@@ -1,0 +1,191 @@
+<main class="home-page">
+
+  <section class="profile-container">
+
+    <!-- Encabezado -->
+    <header class="profile-header">
+
+      <div class="profile-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="8"
+            r="3.5"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+
+          <path
+            d="M5.5 20C5.5 16.4 8.4 13.5 12 13.5C15.6 13.5 18.5 16.4 18.5 20"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <div class="profile-title">
+
+        <h1>Información personal</h1>
+
+        <p>
+          Datos correspondientes a tu cuenta
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- Separador -->
+    <div class="section-separator"></div>
+
+
+    <!-- Información -->
+    <div class="information-grid">
+
+
+      <!-- =============================================
+           NOMBRES Y APELLIDOS
+           ============================================= -->
+
+      <div class="information-field">
+
+        <label>
+          Nombres y apellidos
+        </label>
+
+        <div class="field-value">
+          {{usuario().nombre}}
+        </div>
+
+      </div>
+
+
+      <!-- =============================================
+           DOCUMENTO
+           ============================================= -->
+
+      <div class="information-field">
+
+        <label>
+          Documento / identificación
+        </label>
+
+        <div class="field-value">
+          {{usuario().id}}
+        </div>
+
+      </div>
+
+
+      <!-- =============================================
+           CORREO
+           EDITABLE
+           ============================================= -->
+
+      <div class="information-field editable">
+
+        <label for="email">
+          Correo electrónico
+        </label>
+
+        <div class="editable-field">
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value= "{{usuario().correo}}"
+          >
+
+          <span class="edit-icon">
+
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+
+                            <path
+                              d="M4 20H8L18.5 9.5C19.3 8.7 19.3 7.3 18.5 6.5C17.7 5.7 16.3 5.7 15.5 6.5L5 17V20Z"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linejoin="round"
+                            />
+
+                            <path
+                              d="M13.5 8.5L16.5 11.5"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                            />
+
+                        </svg>
+
+                    </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- =============================================
+           TELÉFONO
+           EDITABLE
+           ============================================= -->
+
+      <div class="information-field editable">
+
+        <label for="phone">
+          Teléfono / celular
+        </label>
+
+        <div class="editable-field">
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value="{{usuario().phone}}"
+          >
+
+          <span class="edit-icon">
+
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+
+                            <path
+                              d="M4 20H8L18.5 9.5C19.3 8.7 19.3 7.3 18.5 6.5C17.7 5.7 16.3 5.7 15.5 6.5L5 17V20Z"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linejoin="round"
+                            />
+
+                            <path
+                              d="M13.5 8.5L16.5 11.5"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                            />
+
+                        </svg>
+
+                    </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
