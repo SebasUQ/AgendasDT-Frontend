@@ -1,432 +1,506 @@
-/* =========================================================
-   PALETA - FUNCTIONAL LIGHT BLUE GRADIENT
+/* ========================================= */
+/* CONTENEDOR GENERAL */
+/* ========================================= */
 
-   #5A85A9
-   #6D98BA
-   #80ABC9
-   #93BDD8
-   #A6D0E7
-   ========================================================= */
+.home-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
+  padding: 40px;
 
-/* =========================================================
-   RESET
-   ========================================================= */
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr);
+  gap: 28px;
 
-* {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 
-html,
-body {
-  width: 100%;
-  min-height: 100%;
+/* ========================================= */
+/* TARJETAS */
+/* ========================================= */
+
+.appointment-card,
+.personal-card {
+  background: #ffffff;
+
+  border: 1px solid #dceaf2;
+  border-radius: 20px;
+
+  box-shadow: 0 15px 35px rgba(58, 104, 130, 0.08);
+
+  overflow: hidden;
 }
 
 
-body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+/* ========================================= */
+/* HEADER DE LAS TARJETAS */
+/* ========================================= */
 
-  color: #305B73;
+.card-header {
+  display: flex;
+  align-items: center;
 
-  background-color: #ffffff;
+  padding: 28px 28px 24px;
+
+  border-bottom: 1px solid #e6eef3;
+
+  position: relative;
 }
 
 
-/* =========================================================
-   PÁGINA
-   ========================================================= */
+.header-icon {
+  width: 54px;
+  height: 54px;
 
-.home-page {
+  min-width: 54px;
 
-
-  width: 100%;
-  min-height: 100vh;
+  border-radius: 15px;
 
   display: flex;
-
+  align-items: center;
   justify-content: center;
 
-  padding:
-    40px
-    25px
-    60px;
+  margin-right: 17px;
 
-  background-color: #ffffff;
+  background: #6f9fc2;
+  color: white;
 
-
+  box-shadow: 0 8px 18px rgba(77, 126, 159, 0.18);
 }
 
 
-/* =========================================================
-   CONTENEDOR PRINCIPAL
-   ========================================================= */
+.header-icon svg {
+  width: 27px;
+  height: 27px;
+}
 
-.profile-container {
 
-  width: min(900px, 100%);
+.header-text {
+  min-width: 0;
+}
 
-  height: min(900px, 100%);
 
-  padding: 50px 20px;
+.header-text h2 {
+  margin: 0;
 
-  background-color: #ffffff;
+  color: #315d78;
 
-  border: 1px solid #E1EEF4;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+.header-text p {
+  margin: 5px 0 0;
+
+  color: #7090a5;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+}
+
+
+/* ========================================= */
+/* BOTÓN REFRESCAR */
+/* ========================================= */
+
+.refresh-button {
+  margin-left: auto;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #edf5f9;
+  color: #5483a3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.refresh-button:hover {
+  background: #dcecf5;
+  color: #3f7194;
+
+  transform: rotate(15deg);
+}
+
+
+.refresh-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* ========================================= */
+/* CONTENIDO DE LA CITA */
+/* ========================================= */
+
+.appointment-content {
+  padding: 28px;
+}
+
+
+.appointment-main {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+
+.appointment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+.appointment-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+.field-label {
+  color: #6d8da2;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.field-value {
+  color: #315d78;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* ========================================= */
+/* ESTADO DE LA CITA */
+/* ========================================= */
+
+.appointment-status {
+  width: fit-content;
+
+  padding: 6px 12px;
 
   border-radius: 20px;
 
-  box-shadow:
-    0 15px 40px rgba(48, 91, 115, 0.08);
+  background: #e5f3ec;
+  color: #39745a;
+
+  font-size: 12px;
+  font-weight: 700;
 }
 
 
-/* =========================================================
-   ENCABEZADO
-   ========================================================= */
+/* ========================================= */
+/* ACCIONES CITA */
+/* ========================================= */
 
-.profile-header {
+.appointment-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 30px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #e6eef3;
+}
+
+
+.cancel-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 17px;
+
+  border: 1px solid #e0a5a5;
+  border-radius: 9px;
+
+  background: #fff7f7;
+  color: #bd6868;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.cancel-button:hover {
+  background: #f9e5e5;
+  border-color: #d68a8a;
+  color: #a95252;
+}
+
+
+.cancel-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ========================================= */
+/* SIN CITA */
+/* ========================================= */
+
+.no-appointment {
+  min-height: 280px;
+
+  padding: 35px;
 
   display: flex;
-
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
+  text-align: center;
+}
+
+
+.empty-icon {
+  width: 58px;
+  height: 58px;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #edf5f9;
+  color: #6d99b5;
+}
+
+
+.empty-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+
+.no-appointment p {
+  margin: 0;
+
+  color: #6e899b;
+
+  font-size: 14px;
+}
+
+
+/* ========================================= */
+/* INFORMACIÓN PERSONAL */
+/* ========================================= */
+
+.personal-content {
+  padding: 26px 28px 8px;
+
+  display: flex;
+  flex-direction: column;
   gap: 18px;
 }
 
 
-/* =========================================================
-   ICONO DEL USUARIO
-   ========================================================= */
-
-.profile-icon {
-
-  width: 54px;
-  height: 54px;
-
-  flex-shrink: 0;
-
+.input-group {
   display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #5A85A9,
-      #80ABC9
-    );
-
-  color: #ffffff;
-
-  box-shadow:
-    0 8px 18px rgba(90, 133, 169, 0.20);
-}
-
-
-.profile-icon svg {
-
-  width: 29px;
-  height: 29px;
-}
-
-
-/* =========================================================
-   TÍTULO
-   ========================================================= */
-
-.profile-title h1 {
-
-  color: #305B73;
-
-  font-size: 1.65rem;
-
-  font-weight: 600;
-
-  letter-spacing: -0.3px;
-}
-
-
-.profile-title p {
-
-  margin-top: 5px;
-
-  color: #6D8A9B;
-
-  font-size: 0.85rem;
-}
-
-
-/* =========================================================
-   SEPARADOR
-   ========================================================= */
-
-.section-separator {
-
-  width: 100%;
-  height: 1px;
-
-  margin: 30px 0;
-
-  background:
-    linear-gradient(
-      to right,
-      #A6D0E7,
-      #E1EEF4,
-      transparent
-    );
-}
-
-
-/* =========================================================
-   GRID DE INFORMACIÓN
-   ========================================================= */
-
-.information-grid {
-
-  display: grid;
-
-  grid-template-columns:
-        repeat(2, 1fr);
-
-  gap: 22px 25px;
-}
-
-
-/* =========================================================
-   CAMPO
-   ========================================================= */
-
-.information-field {
-
-  display: flex;
-
   flex-direction: column;
-
-  gap: 8px;
+  gap: 7px;
 }
 
 
-.information-field label {
+.input-group label {
+  color: #55778e;
 
-  color: #467185;
-
-  font-size: 0.78rem;
-
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 
-/* =========================================================
-   CAMPOS NO EDITABLES
-   ========================================================= */
-
-.field-value {
-
-  min-height: 45px;
-
-  display: flex;
-
-  align-items: center;
-
-  padding:
-    0 14px;
-
-  border: 1px solid #E1EEF4;
-
-  border-radius: 9px;
-
-  background-color: #F7FBFD;
-
-  color: #305B73;
-
-  font-size: 0.88rem;
-}
-
-
-/* =========================================================
-   CAMPOS EDITABLES
-   ========================================================= */
-
-.editable-field {
-
+.input-container {
   position: relative;
-
-  width: 100%;
 }
 
 
-.editable-field input {
-
+.input-container input {
   width: 100%;
-
   height: 45px;
 
-  padding:
-    0 42px
-    0 14px;
+  box-sizing: border-box;
 
-  border: 1.5px solid #A6D0E7;
+  padding: 0 13px;
 
+  border: 1px solid #d6e6ef;
   border-radius: 9px;
 
-  outline: none;
+  background: #f5fafd;
 
-  background-color: #ffffff;
-
-  color: #305B73;
+  color: #315d78;
 
   font-family: inherit;
+  font-size: 13px;
 
-  font-size: 0.88rem;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  outline: none;
 }
 
 
-.editable-field input:hover {
+.input-container input[readonly] {
+  color: #668397;
 
-  border-color: #80ABC9;
+  cursor: default;
 }
 
 
-.editable-field input:focus {
+.input-container.editable input {
+  padding-right: 42px;
 
-  border-color: #5A85A9;
+  background: #ffffff;
 
-  box-shadow:
-    0 0 0 3px rgba(128, 171, 201, 0.18);
+  border-color: #8fc4e5;
 }
 
 
-/* =========================================================
-   ICONO DE EDICIÓN
-   ========================================================= */
+.input-container.editable input:focus {
+  border-color: #5798c2;
+
+  box-shadow: 0 0 0 3px rgba(87, 152, 194, 0.10);
+}
+
+
+/* ========================================= */
+/* ICONO EDITAR */
+/* ========================================= */
 
 .edit-icon {
-
   position: absolute;
 
+  right: 13px;
   top: 50%;
-  right: 12px;
 
   transform: translateY(-50%);
 
-  width: 22px;
-  height: 22px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  color: #5A85A9;
+  color: #5989aa;
 
   pointer-events: none;
 }
 
 
 .edit-icon svg {
-
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
 }
 
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* ========================================= */
+/* BOTÓN ACTUALIZAR */
+/* ========================================= */
 
-@media (max-width: 700px) {
+.personal-actions {
+  padding: 22px 28px 28px;
 
-  .home-page {
+  display: flex;
+  justify-content: flex-end;
 
-    padding:
-      100px
-      18px
-      40px;
-  }
+  border-top: 1px solid #e6eef3;
 
-
-  .profile-container {
-
-    padding:
-      32px 25px;
-  }
+  margin-top: 18px;
+}
 
 
-  .information-grid {
+.update-button {
+  min-width: 110px;
 
+  padding: 11px 20px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #dce8ef;
+  color: #8ba0ad;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: not-allowed;
+
+  transition: all 0.2s ease;
+}
+
+
+.update-button.modified {
+  background: #5f91b5;
+  color: white;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 12px rgba(80, 133, 168, 0.20);
+}
+
+
+.update-button.modified:hover {
+  background: #4f819f;
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 950px) {
+
+  .home-container {
     grid-template-columns: 1fr;
-
-    gap: 18px;
   }
 
 }
 
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
 
-  .home-page {
-
-    padding:
-      90px
-      12px
-      30px;
+  .home-container {
+    padding: 20px;
   }
 
-
-  .profile-container {
-
-    padding:
-      27px 20px;
-
-    border-radius: 16px;
+  .card-header {
+    padding: 22px;
   }
 
-
-  .profile-header {
-
-    gap: 13px;
+  .appointment-content,
+  .personal-content {
+    padding-left: 22px;
+    padding-right: 22px;
   }
 
-
-  .profile-icon {
-
-    width: 47px;
-    height: 47px;
-
-    border-radius: 12px;
-  }
-
-
-  .profile-icon svg {
-
-    width: 25px;
-    height: 25px;
-  }
-
-
-  .profile-title h1 {
-
-    font-size: 1.35rem;
-  }
-
-
-  .profile-title p {
-
-    font-size: 0.78rem;
+  .appointment-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
 }

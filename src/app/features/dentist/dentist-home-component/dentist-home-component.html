@@ -1,0 +1,180 @@
+
+<section class="dashboard">
+
+  <header class="page-header">
+    <div>
+      <h1>Resumen general del día</h1>
+      <p>Consulta el estado de las citas y la atención de pacientes.</p>
+    </div>
+  </header>
+
+  <!-- Resumen -->
+  <section class="summary-grid">
+
+    <article class="summary-card">
+      <div class="summary-icon appointments-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="5" width="18" height="16" rx="2"
+                stroke="currentColor" stroke-width="1.8"/>
+          <path d="M8 3V7M16 3V7M3 10H21"
+                stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="summary-info">
+        <span class="summary-label">Citas para hoy</span>
+        <strong class="summary-value">{{ totalCitas }}</strong>
+      </div>
+    </article>
+
+    <article class="summary-card">
+      <div class="summary-icon attended-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9"
+                  stroke="currentColor" stroke-width="1.8"/>
+          <path d="M7.5 12.5L10.5 15.5L16.5 9"
+                stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="summary-info">
+        <span class="summary-label">Pacientes atendidos</span>
+        <strong class="summary-value">
+          {{ pacientesAtendidos }}
+          <span class="summary-total">/ {{ totalCitas }}</span>
+        </strong>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Próximos pacientes -->
+  <section class="appointments-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Próximos pacientes</h2>
+        <p>Selecciona una cita para actualizar su estado.</p>
+      </div>
+
+      <span class="appointments-count">
+        {{ totalCitas }}
+        {{ totalCitas === 1 ? 'cita' : 'citas' }}
+      </span>
+    </div>
+
+    <div class="table-card">
+      <div class="table-wrapper">
+
+        <table>
+          <thead>
+          <tr>
+            <th scope="col">Hora</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Estado</th>
+          </tr>
+          </thead>
+
+          <tbody>
+            @if (citas.length > 0) {
+
+              @for (cita of citas; track cita.id) {
+                <tr
+                  tabindex="0"
+                  [class.selected]="citaSeleccionadaId === cita.id"
+                  [attr.aria-selected]="citaSeleccionadaId === cita.id"
+                  (click)="seleccionarCita(cita)"
+                  (keydown.enter)="seleccionarCita(cita)"
+                  (keydown.space)="seleccionarCita(cita); $event.preventDefault()">
+
+                  <td class="time-cell">{{ cita.hora }}</td>
+
+                  <td class="patient-cell">{{ cita.paciente }}</td>
+
+                  <td>
+                    <span
+                      class="status-badge"
+                      [class.status-attended]="cita.estado === 'Atendido'"
+                      [class.status-pending]="cita.estado === 'Pendiente' || cita.estado === 'En espera'"
+                      [class.status-confirmed]="cita.estado === 'Confirmado' || cita.estado === 'Agendado'">
+
+                      <span class="status-dot"></span>
+                      {{ cita.estado }}
+                    </span>
+                  </td>
+
+                </tr>
+              }
+
+            } @else {
+
+              <tr class="empty-row">
+                <td colspan="3">
+                  <div class="empty-state">
+                    <div class="empty-icon">
+                      <svg viewBox="0 0 24 24" fill="none"
+                           xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="5" width="18" height="16" rx="2"
+                              stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M8 3V7M16 3V7M3 10H21"
+                              stroke="currentColor" stroke-width="1.6"
+                              stroke-linecap="round"/>
+                        <path d="M9 14H15"
+                              stroke="currentColor" stroke-width="1.6"
+                              stroke-linecap="round"/>
+                      </svg>
+                    </div>
+
+                    <h3>No hay citas programadas para hoy</h3>
+                    <p>
+                      Cuando existan citas para esta fecha,
+                      aparecerán en esta tabla.
+                    </p>
+                  </div>
+                </td>
+              </tr>
+
+            }
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Acción sobre la fila seleccionada -->
+    <div class="table-actions">
+      @if (citaSeleccionadaId !== null) {
+        <span class="selection-hint">
+          <span class="selection-indicator"></span>
+          Cita seleccionada
+        </span>
+      } @else {
+        <span class="selection-hint">
+          Selecciona una fila para continuar.
+        </span>
+      }
+
+      <button
+        type="button"
+        class="attend-button"
+        [disabled]="citaSeleccionadaId === null"
+        (click)="marcarComoAtendido()">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12.5L9.5 17L19 7.5"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        Marcar como atendido
+      </button>
+    </div>
+
+  </section>
+
+</section>

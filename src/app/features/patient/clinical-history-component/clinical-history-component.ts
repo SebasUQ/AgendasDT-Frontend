@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HistoryCardComponent } from './history-card-component/history-card-component';
-import { HistoryDetailsComponent } from './history-details-component/history-details-component';
+import { HistoryCardComponent } from '../../../shared/components/history-card-component/history-card-component';
+import { HistoryDetailsComponent } from '../../../shared/components/history-details-component/history-details-component';
 
 @Component({
   imports: [HistoryCardComponent, HistoryDetailsComponent],
@@ -11,20 +11,14 @@ import { HistoryDetailsComponent } from './history-details-component/history-det
 export class ClinicalHistoryComponent {
   clinicalHistory: clinicalHistory[] = [
     {
-      patientId: 1,
-
       historyId: 1,
-
-      fecha: '10 de septiembre de 2026',
-
-      diagnostico: 'Caries dental localizada en molar superior.',
-
-      tratamiento: 'Restauración dental.',
-
-      observaciones:
-        'Se realizó valoración odontológica y se recomienda mantener controles periódicos.',
-
+      patientId: 1,
+      fecha: '21/10/2021',
+      diagnostico: 'asm',
+      observaciones: 'ksk',
+      tratamiento: '',
     },
+
   ];
 
   mostrarDetalle = false;

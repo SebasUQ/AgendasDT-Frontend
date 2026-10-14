@@ -8,6 +8,9 @@ import { AppointmentComponent } from './features/patient/appointment-component/a
 import { ClinicalHistoryComponent } from './features/patient/clinical-history-component/clinical-history-component';
 import { DentistPageComponent } from './pages/dentist-page-component/dentist-page-component';
 import { DentistHomeComponent } from './features/dentist/dentist-home-component/dentist-home-component';
+import { CalendarComponent } from './features/dentist/calendar-component/calendar-component';
+import { ConsultationComponent } from './features/dentist/consultation-component/consultation-component';
+import { DiagnoseComponent } from './features/dentist/diagnose-component/diagnose-component';
 
 
 export const routes: Routes = [
@@ -58,6 +61,18 @@ export const routes: Routes = [
       {
         path: 'home',
         component: DentistHomeComponent
+      },
+      {
+        path: 'calendario',
+        component: CalendarComponent
+      },
+      {
+        path: 'consultar',
+        component: ConsultationComponent
+      },
+      {
+        path: 'diagnosticar',
+        component: DiagnoseComponent
       }
     ]
   }

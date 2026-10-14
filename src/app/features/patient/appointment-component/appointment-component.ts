@@ -33,7 +33,7 @@ export class AppointmentComponent implements OnInit {
 
   mesActual: Date = new Date();
 
-  diasCalendario: calendarDay[] = [];
+  diasCalendario: DiaCalendario[] = [];
 
   // Horarios
 
@@ -120,7 +120,7 @@ export class AppointmentComponent implements OnInit {
 
     primerDiaSemana = primerDiaSemana === 0 ? 6 : primerDiaSemana - 1;
 
-    const dias: calendarDay[] = [];
+    const dias: DiaCalendario[] = [];
 
     // Espacios antes del día 1.
 
