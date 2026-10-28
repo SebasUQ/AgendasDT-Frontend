@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { SessionService } from '../../../core/service/session.service';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { SessionService } from '../../../core/services/session.service';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -19,6 +19,9 @@ export class AppointmentComponent implements OnInit {
   private userService = inject(SessionService);
   usuario = this.userService.usuarioActual;
 
+  @Input()
+  paciente!: any;
+
   // Selección actual
 
   especialidadSeleccionada: specialty | null = null;
@@ -37,9 +40,17 @@ export class AppointmentComponent implements OnInit {
 
   // Horarios
 
-  horariosDisponibles: string[] =
-    ['08:00 AM', '8:45 AM', '9:30 AM', '10:15 AM', '11:00 AM', '11:45 AM',
-    '2:00 PM', '2:45 PM', '3:30 PM'];
+  horariosDisponibles: string[] = [
+    '08:00 AM',
+    '8:45 AM',
+    '9:30 AM',
+    '10:15 AM',
+    '11:00 AM',
+    '11:45 AM',
+    '2:00 PM',
+    '2:45 PM',
+    '3:30 PM',
+  ];
 
   ngOnInit(): void {
     this.generarCalendario();
@@ -249,7 +260,5 @@ export class AppointmentComponent implements OnInit {
     });
   }
 
-  protected confirmarCita() {
-
-  }
+  protected confirmarCita() {}
 }

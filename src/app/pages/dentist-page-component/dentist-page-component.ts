@@ -11,6 +11,9 @@ import { MenuItem } from '../../core/interface/menu.item.interface';
   templateUrl: './dentist-page-component.html',
 })
 export class DentistPageComponent {
+
+  userRole: string = "Odontólogo";
+
   menuItems: MenuItem[] = [
     {
       label: 'Calendario',

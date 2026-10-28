@@ -12,6 +12,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class PatientPageComponent {
 
+  userRole: string = "Paciente";
+
   menuItems: MenuItem[] = [
     {
       label: 'Agendar cita',
