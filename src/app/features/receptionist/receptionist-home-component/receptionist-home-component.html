@@ -1,0 +1,187 @@
+
+<div class="receptionist-home">
+
+  <!-- Encabezado de la vista -->
+  <section class="page-heading">
+    <h1>Resumen general del día</h1>
+    <p>Consulta el estado de las citas y la atención de pacientes.</p>
+  </section>
+
+  <!-- Tarjetas de resumen -->
+  <section class="summary-cards">
+
+    <article class="summary-card">
+      <div class="summary-icon icon-blue">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="5" width="18" height="16" rx="2"/>
+          <path d="M16 3v4M8 3v4M3 10h18"/>
+        </svg>
+      </div>
+
+      <div class="summary-content">
+        <p class="summary-label">Citas para hoy</p>
+        <h2>{{ citasHoy.length }}</h2>
+        <span class="summary-description">
+          Citas programadas para la jornada
+        </span>
+      </div>
+    </article>
+
+    <article class="summary-card">
+      <div class="summary-icon icon-green">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="m8 12 2.5 2.5L16 9"/>
+        </svg>
+      </div>
+
+      <div class="summary-content">
+        <p class="summary-label">Pacientes recibidos</p>
+        <h2>
+          {{ pacientesRecibidos }}
+          <span class="summary-total">/ {{ citasHoy.length }}</span>
+        </h2>
+        <span class="summary-description">
+          Llegadas registradas hoy
+        </span>
+      </div>
+    </article>
+
+    <article class="summary-card">
+      <div class="summary-icon icon-orange">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+      </div>
+
+      <div class="summary-content">
+        <p class="summary-label">Pendientes de llegada</p>
+        <h2>{{ pacientesPorRecibir }}</h2>
+        <span class="summary-description">
+          Pacientes que aún no se han registrado
+        </span>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Tabla de citas del día -->
+  <section class="appointments-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Agenda del día</h2>
+        <p>Registra la llegada de los pacientes según su cita programada.</p>
+      </div>
+
+      <span class="appointments-counter">
+        {{ citasHoy.length }}
+        {{ citasHoy.length === 1 ? 'cita' : 'citas' }}
+      </span>
+    </div>
+
+    <div class="table-container">
+      <table class="appointments-table">
+
+        <thead>
+        <tr>
+          <th>HORA</th>
+          <th>PACIENTE</th>
+          <th>ODONTÓLOGO</th>
+          <th>ESTADO</th>
+          <th class="action-column">ACCIÓN</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          @for (cita of citasHoy; track cita.id) {
+            <tr>
+              <td class="appointment-time">
+                {{ cita.hora }}
+              </td>
+
+              <td class="patient-cell">
+                <span class="patient-name">{{ cita.paciente }}</span>
+              </td>
+
+              <td class="dentist-cell">
+                {{ cita.doctor }}
+              </td>
+
+              <td>
+                <span
+                  class="status-badge"
+                  [class.status-pending]="cita.estado === 'Agendado'"
+                  [class.status-confirmed]="cita.estado === 'Confirmado'"
+                  [class.status-waiting]="cita.estado === 'En espera'"
+                  [class.status-attended]="cita.estado === 'Atendido'">
+
+                  {{ cita.estado }}
+                </span>
+              </td>
+
+              <td class="action-column">
+                @if (cita.estado === 'Agendado' ||
+                cita.estado === 'Confirmado') {
+                  <button
+                    type="button"
+                    class="check-in-button"
+                    (click)="registrarLlegada(cita)">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="10" cy="7" r="4"/>
+                      <path d="m17 11 2 2 4-4"/>
+                    </svg>
+                    Registrar llegada
+                  </button>
+                } @else if (cita.estado === 'En espera') {
+                  <span class="arrival-confirmed">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2">
+                      <path d="m5 12 4 4L19 6"/>
+                    </svg>
+                    Recibido
+                  </span>
+                } @else {
+                  <span class="arrival-completed">Finalizada</span>
+                }
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="5" class="empty-cell">
+                <div class="empty-state">
+                  <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6">
+                      <rect x="3" y="5" width="18" height="16" rx="2"/>
+                      <path d="M16 3v4M8 3v4M3 10h18"/>
+                    </svg>
+                  </div>
+
+                  <h3>No hay citas programadas para hoy</h3>
+                  <p>
+                    Cuando existan citas para esta jornada,
+                    aparecerán aquí ordenadas por hora.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+    <p class="table-footnote">
+      Las citas se muestran en orden cronológico.
+    </p>
+
+  </section>
+
+</div>

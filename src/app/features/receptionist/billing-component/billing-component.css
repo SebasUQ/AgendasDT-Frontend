@@ -1,0 +1,880 @@
+
+:host {
+  display: block;
+  min-width: 0;
+  color: #315d78;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.billing-page {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: 16px 30px 30px;
+  background: #fff;
+}
+
+.billing-page *,
+.billing-page *::before,
+.billing-page *::after {
+  box-sizing: border-box;
+}
+
+/* Encabezado */
+
+.page-heading {
+  margin-bottom: 28px;
+}
+
+.page-heading h1 {
+  margin: 0 0 8px;
+  color: #315f7d;
+  font-size: 27px;
+  line-height: 1.25;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #6889a2;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Buscador y filtros */
+
+.billing-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.search-field {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 11px;
+  min-width: 180px;
+  min-height: 45px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #cbdfea;
+  border-radius: 9px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-field:focus-within {
+  border-color: #568bb4;
+  box-shadow: 0 0 0 3px rgba(86, 139, 180, 0.12);
+}
+
+.search-field svg {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  color: #7192aa;
+}
+
+.search-field input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 0;
+  color: #315d78;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.search-field input::placeholder {
+  color: #91a8b8;
+}
+
+.billing-filters {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  background: #f2f7fa;
+  border-radius: 9px;
+}
+
+.filter-button {
+  min-height: 35px;
+  padding: 0 15px;
+  color: #6b899f;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-button:hover:not(.filter-active) {
+  color: #315f7d;
+  background: #e5f0f7;
+}
+
+.filter-button.filter-active {
+  color: #315f7d;
+  background: #fff;
+  border-color: #d5e5ef;
+  box-shadow: 0 1px 3px rgba(49, 93, 120, 0.07);
+}
+
+.filter-button:focus-visible,
+.invoice-action:focus-visible,
+.modal-close:focus-visible,
+.confirm-payment-button:focus-visible {
+  outline: 3px solid #a8d4ee;
+  outline-offset: 3px;
+}
+
+/* Listado */
+
+.invoices-section {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 0 0 7px;
+  color: #315f7d;
+  font-size: 22px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #7793a8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.invoice-counter {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  color: #416d8c;
+  background: #e8f3f9;
+  border-radius: 22px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Tabla */
+
+.invoice-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 13px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.invoice-table thead {
+  background: #e8f3f9;
+}
+
+.invoice-table th {
+  padding: 15px 16px;
+  color: #416b89;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+}
+
+.invoice-table td {
+  padding: 16px;
+  color: #5b7c95;
+  border-top: 1px solid #e8f0f5;
+  vertical-align: middle;
+}
+
+.invoice-table tbody tr:first-child td {
+  border-top: none;
+}
+
+.invoice-table tbody tr:hover:not(:has(.empty-state)) {
+  background: #f8fbfd;
+}
+
+.invoice-number {
+  color: #416b89 !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.patient-name {
+  color: #365f7c;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.patient-document {
+  margin-top: 5px;
+  color: #8ba1b1;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+.invoice-date {
+  min-width: 125px;
+  white-space: nowrap;
+}
+
+.invoice-total {
+  color: #315f7d !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.actions-column {
+  min-width: 175px;
+}
+
+/* Estados */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-pending {
+  color: #a87535;
+  background: #fbf0df;
+}
+
+.status-paid {
+  color: #38846e;
+  background: #e6f4ef;
+}
+
+/* Acciones de la tabla */
+
+.invoice-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 35px;
+  padding: 8px 11px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.invoice-action svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.primary-action {
+  color: #fff;
+  background: #4d83aa;
+  border-color: #4d83aa;
+}
+
+.primary-action:hover {
+  background: #356a91;
+  border-color: #356a91;
+}
+
+.secondary-action {
+  color: #416d8c;
+  background: #edf5fa;
+  border-color: #d5e5ef;
+}
+
+.secondary-action:hover {
+  background: #deedf6;
+  border-color: #bfd7e7;
+}
+
+/* Estado vacío */
+
+.empty-cell {
+  padding: 0 !important;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  padding: 35px 24px;
+  text-align: center;
+}
+
+.empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  color: #598bb4;
+  background: #e8f3f9;
+  border-radius: 15px;
+}
+
+.empty-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.empty-state h3 {
+  margin: 0 0 9px;
+  color: #416b89;
+  font-size: 16px;
+}
+
+.empty-state p {
+  max-width: 390px;
+  margin: 0;
+  color: #8ba1b1;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.table-footnote {
+  margin: 12px 0 0;
+  color: #91a5b4;
+  font-size: 11px;
+}
+
+/* ==================================
+   MODAL DE FACTURACIÓN
+================================== */
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(29, 52, 68, 0.52);
+  backdrop-filter: blur(2px);
+}
+
+.invoice-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 760px;
+  max-height: min(90vh, 900px);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 16px;
+  box-shadow: 0 20px 65px rgba(23, 48, 65, 0.22);
+  animation: modal-appear 0.18s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cabecera fija del modal */
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 27px;
+  background: #f5f9fc;
+  border-bottom: 1px solid #dce9f1;
+}
+
+.modal-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #6389a5;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.modal-header h2 {
+  margin: 0 0 7px;
+  color: #315f7d;
+  font-size: 24px;
+}
+
+.modal-header p {
+  margin: 0;
+  color: #7793a8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.modal-close {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: #62839a;
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #315f7d;
+  background: #e8f3f9;
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Contenido desplazable */
+
+.modal-body {
+  min-height: 0;
+  padding: 23px 27px 27px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.modal-date {
+  color: #7793a8;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+/* Secciones del detalle */
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 15px;
+  color: #315f7d;
+  font-size: 16px;
+}
+
+.detail-section-title svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #5688b3;
+}
+
+.patient-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding: 18px;
+  background: #f7fafc;
+  border: 1px solid #e0ebf2;
+  border-radius: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.info-item span {
+  color: #8099ab;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+.info-item strong {
+  overflow-wrap: anywhere;
+  color: #416b89;
+  font-size: 13px;
+}
+
+/* Conceptos facturados */
+
+.concept-list {
+  overflow: hidden;
+  border: 1px solid #dce8f0;
+  border-radius: 10px;
+}
+
+.concept-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px;
+}
+
+.concept-item + .concept-item {
+  border-top: 1px solid #e6eef4;
+}
+
+.concept-description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.concept-description strong {
+  color: #416b89;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.concept-description span {
+  color: #829aaa;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.concept-price {
+  flex-shrink: 0;
+  color: #315f7d;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.no-concepts {
+  padding: 16px;
+  margin: 0;
+  color: #8ba1b1;
+  background: #f8fbfd;
+  border: 1px dashed #d5e5ef;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Totales */
+
+.invoice-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 19px;
+  margin-bottom: 25px;
+  background: #f3f8fb;
+  border: 1px solid #dce9f1;
+  border-radius: 11px;
+}
+
+.total-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #6889a2;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.total-line span:last-child {
+  color: #416b89;
+  white-space: nowrap;
+}
+
+.grand-total {
+  padding-top: 14px;
+  border-top: 1px solid #d5e5ef;
+}
+
+.grand-total strong:first-child {
+  color: #315f7d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+}
+
+.grand-total strong:last-child {
+  color: #315f7d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  white-space: nowrap;
+}
+
+/* Pago */
+
+.payment-section {
+  padding: 21px;
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 11px;
+}
+
+.payment-section h3 {
+  margin: 0 0 7px;
+  color: #315f7d;
+  font-size: 17px;
+}
+
+.payment-section > p {
+  margin: 0 0 18px;
+  color: #7793a8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.payment-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-section label {
+  color: #416b89;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.payment-section select {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+  color: #416b89;
+  background: #fff;
+  border: 1px solid #cbdfea;
+  border-radius: 8px;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.payment-section select:focus {
+  border-color: #568bb4;
+  box-shadow: 0 0 0 3px rgba(86, 139, 180, 0.12);
+}
+
+.payment-error {
+  margin: 2px 0;
+  color: #a54f4f;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.confirm-payment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 11px 16px;
+  margin-top: 8px;
+  color: #fff;
+  background: #4d83aa;
+  border: 1px solid #4d83aa;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirm-payment-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.confirm-payment-button:hover:not(:disabled) {
+  background: #356a91;
+}
+
+.confirm-payment-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Factura pagada */
+
+.paid-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  color: #38846e;
+  background: #eaf6f0;
+  border: 1px solid #d2eae0;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.paid-notice svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .billing-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .billing-filters {
+    align-self: flex-start;
+  }
+
+  .invoice-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 650px) {
+  .billing-page {
+    padding: 20px 15px;
+  }
+
+  .page-heading h1 {
+    font-size: 23px;
+  }
+
+  .billing-filters {
+    width: 100%;
+  }
+
+  .filter-button {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .section-heading h2 {
+    font-size: 20px;
+  }
+
+  .section-heading p {
+    font-size: 12px;
+  }
+
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .invoice-modal {
+    max-height: 94dvh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .modal-header {
+    padding: 20px 18px;
+  }
+
+  .modal-header h2 {
+    font-size: 21px;
+  }
+
+  .modal-body {
+    padding: 19px 17px 24px;
+  }
+
+  .patient-info-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .payment-section {
+    padding: 16px;
+  }
+
+  .grand-total strong:last-child {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invoice-modal {
+    animation: none;
+  }
+
+  .search-field,
+  .filter-button,
+  .invoice-action,
+  .confirm-payment-button {
+    transition: none;
+  }
+}

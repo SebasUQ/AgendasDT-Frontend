@@ -1,0 +1,412 @@
+
+<div class="billing-page">
+
+  <!-- Encabezado -->
+  <header class="page-heading">
+    <h1>Facturación</h1>
+    <p>
+      Consulta las facturas generadas y gestiona los pagos de los pacientes.
+    </p>
+  </header>
+
+  <!-- Buscador y filtros -->
+  <section class="billing-toolbar">
+
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m16 16 5 5"/>
+      </svg>
+
+      <input
+        type="search"
+        name="buscarFactura"
+        placeholder="Buscar por paciente, documento o número de factura..."
+        aria-label="Buscar facturas"
+        [(ngModel)]="textoBusqueda"
+      />
+    </div>
+
+    <div class="billing-filters" aria-label="Filtrar facturas">
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-active]="filtroEstado === 'Todas'"
+        [attr.aria-pressed]="filtroEstado === 'Todas'"
+        (click)="cambiarFiltro('Todas')">
+        Todas
+      </button>
+
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-active]="filtroEstado === 'Pendiente'"
+        [attr.aria-pressed]="filtroEstado === 'Pendiente'"
+        (click)="cambiarFiltro('Pendiente')">
+        Pendientes
+      </button>
+
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-active]="filtroEstado === 'Pagada'"
+        [attr.aria-pressed]="filtroEstado === 'Pagada'"
+        (click)="cambiarFiltro('Pagada')">
+        Pagadas
+      </button>
+    </div>
+
+  </section>
+
+  <!-- Listado de facturas -->
+  <section class="invoices-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Listado de facturas</h2>
+        <p>Facturas generadas a partir de las atenciones odontológicas.</p>
+      </div>
+
+      <span class="invoice-counter">
+        {{ facturasFiltradas.length }}
+        {{ facturasFiltradas.length === 1 ? 'factura' : 'facturas' }}
+      </span>
+    </div>
+
+    <div class="invoice-table-container">
+      <table class="invoice-table">
+
+        <thead>
+        <tr>
+          <th>N.º FACTURA</th>
+          <th>PACIENTE</th>
+          <th>FECHA DE EMISIÓN</th>
+          <th>TOTAL</th>
+          <th>ESTADO</th>
+          <th class="actions-column">ACCIÓN</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          @for (factura of facturasFiltradas; track factura.id) {
+            <tr>
+              <td class="invoice-number">
+                {{ factura.numero }}
+              </td>
+
+              <td>
+                <div class="patient-name">
+                  {{ factura.pacienteNombre }}
+                </div>
+                <div class="patient-document">
+                  Doc. {{ factura.documentoPaciente }}
+                </div>
+              </td>
+
+              <td class="invoice-date">
+                {{ factura.fechaEmision }}
+              </td>
+
+              <td class="invoice-total">
+                {{ factura.total | currency:'COP':'symbol-narrow':'1.0-0' }}
+              </td>
+
+              <td>
+                <span
+                  class="status-badge"
+                  [class.status-pending]="factura.estado === 'Pendiente'"
+                  [class.status-paid]="factura.estado === 'Pagada'">
+                  <span class="status-dot"></span>
+                  {{ factura.estado }}
+                </span>
+              </td>
+
+              <td class="actions-column">
+                @if (factura.estado === 'Pendiente') {
+                  <button
+                    type="button"
+                    class="invoice-action primary-action"
+                    (click)="abrirDetalle(factura)">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8">
+                      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Revisar / Cobrar
+                  </button>
+                } @else {
+                  <button
+                    type="button"
+                    class="invoice-action secondary-action"
+                    (click)="abrirDetalle(factura)">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8">
+                      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Ver detalle
+                  </button>
+                }
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="empty-cell">
+                <div class="empty-state">
+                  <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.7">
+                      <path d="M6 2h9l5 5v15H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/>
+                      <path d="M14 2v6h6M8 13h8M8 17h8"/>
+                    </svg>
+                  </div>
+
+                  <h3>No se encontraron facturas</h3>
+                  <p>
+                    No hay facturas que coincidan con la búsqueda
+                    o el filtro seleccionado.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+    <p class="table-footnote">
+      Las facturas se generan a partir de las atenciones odontológicas finalizadas.
+    </p>
+
+  </section>
+
+  <!-- Modal de detalle y cobro -->
+  @if (facturaSeleccionada; as factura) {
+    <div
+      class="modal-backdrop"
+      (click)="cerrarDetalle()">
+
+      <section
+        class="invoice-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="invoiceModalTitle"
+        (click)="$event.stopPropagation()">
+
+        <!-- Cabecera del modal -->
+        <header class="modal-header">
+          <div>
+            <span class="modal-eyebrow">FACTURACIÓN · {{ factura.numero }}</span>
+            <h2 id="invoiceModalTitle">Detalle de factura</h2>
+            <p>Consulta los conceptos y la información del cobro.</p>
+          </div>
+
+          <button
+            type="button"
+            class="modal-close"
+            aria-label="Cerrar detalle de factura"
+            (click)="cerrarDetalle()">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="m18 6-12 12M6 6l12 12"/>
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal-body">
+
+          <!-- Estado de la factura -->
+          <div class="modal-status-row">
+            <span class="status-badge"
+                  [class.status-pending]="factura.estado === 'Pendiente'"
+                  [class.status-paid]="factura.estado === 'Pagada'">
+              <span class="status-dot"></span>
+              {{ factura.estado }}
+            </span>
+
+            <span class="modal-date">
+              Emitida: {{ factura.fechaEmision }}
+            </span>
+          </div>
+
+          <!-- Información del paciente -->
+          <section class="detail-section">
+            <h3 class="detail-section-title">
+              <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
+              </svg>
+              Información del paciente
+            </h3>
+
+            <div class="patient-info-grid">
+              <div class="info-item">
+                <span>Nombre completo</span>
+                <strong>{{ factura.pacienteNombre }}</strong>
+              </div>
+
+              <div class="info-item">
+                <span>Número de documento</span>
+                <strong>{{ factura.documentoPaciente }}</strong>
+              </div>
+
+              <div class="info-item">
+                <span>Número de factura</span>
+                <strong>{{ factura.numero }}</strong>
+              </div>
+
+              <div class="info-item">
+                <span>Fecha de emisión</span>
+                <strong>{{ factura.fechaEmision }}</strong>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tratamientos odontológicos -->
+          <section class="detail-section">
+            <h3 class="detail-section-title">
+              <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3c-2.5-2-7-1-8 3-1 4 2 8 3 12 .5 2 2 4 3 1l2-6 2 6c1 3 2.5 1 3-1 1-4 4-8 3-12-1-4-5.5-5-8-3Z"/>
+              </svg>
+              Tratamientos odontológicos
+            </h3>
+
+            @if (factura.tratamientos.length > 0) {
+              <div class="concept-list">
+                @for (tratamiento of factura.tratamientos; track tratamiento.id) {
+                  <div class="concept-item">
+                    <div class="concept-description">
+                      <strong>{{ tratamiento.nombre }}</strong>
+                      <span>{{ tratamiento.descripcion }}</span>
+                    </div>
+
+                    <strong class="concept-price">
+                      {{ tratamiento.valor | currency:'COP':'symbol-narrow':'1.0-0' }}
+                    </strong>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="no-concepts">
+                No hay tratamientos asociados a esta factura.
+              </p>
+            }
+          </section>
+
+          <!-- Medicamentos recetados -->
+          <section class="detail-section">
+            <h3 class="detail-section-title">
+              <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8">
+                <path d="m10 14 4-4"/>
+                <path d="M7 17a5 5 0 0 1 0-7l3-3a5 5 0 0 1 7 7l-3 3a5 5 0 0 1-7 0Z"/>
+                <path d="m8 8 8 8"/>
+              </svg>
+              Medicamentos recetados
+            </h3>
+
+            @if (factura.medicamentos.length > 0) {
+              <div class="concept-list">
+                @for (medicamento of factura.medicamentos; track medicamento.id) {
+                  <div class="concept-item">
+                    <div class="concept-description">
+                      <strong>{{ medicamento.nombre }}</strong>
+                      <span>
+                        Cantidad: {{ medicamento.cantidad }}
+                        · Presentación: {{ medicamento.presentacion }}
+                      </span>
+                    </div>
+
+                    <strong class="concept-price">
+                      {{ medicamento.valor | currency:'COP':'symbol-narrow':'1.0-0' }}
+                    </strong>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="no-concepts">
+                Esta factura no contiene medicamentos facturables.
+              </p>
+            }
+          </section>
+
+          <!-- Resumen económico -->
+          <section class="invoice-totals">
+            <div class="total-line">
+              <span>Subtotal de tratamientos</span>
+              <span>{{ factura.subtotalTratamientos | currency:'COP':'symbol-narrow':'1.0-0' }}</span>
+            </div>
+
+            <div class="total-line">
+              <span>Subtotal de medicamentos</span>
+              <span>{{ factura.subtotalMedicamentos | currency:'COP':'symbol-narrow':'1.0-0' }}</span>
+            </div>
+
+            <div class="total-line grand-total">
+              <strong>Total de la factura</strong>
+              <strong>{{ factura.total | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+            </div>
+          </section>
+
+          <!-- Registro del pago -->
+          @if (factura.estado === 'Pendiente') {
+            <section class="payment-section">
+              <h3>Registrar pago</h3>
+              <p>El pago debe cubrir el importe total de la factura.</p>
+
+              <form (ngSubmit)="confirmarPago()">
+                <label for="metodoPago">Método de pago</label>
+
+                <select
+                  id="metodoPago"
+                  name="metodoPago"
+                  [(ngModel)]="metodoPago"
+                  required>
+                  <option value="" disabled>Selecciona un método de pago</option>
+                  @for (metodo of metodosPago; track metodo.valor) {
+                    <option [value]="metodo.valor">
+                      {{ metodo.nombre }}
+                    </option>
+                  }
+                </select>
+
+                @if (errorPago) {
+                  <p class="payment-error" role="alert">{{ errorPago }}</p>
+                }
+
+                <button
+                  type="submit"
+                  class="confirm-payment-button"
+                  [disabled]="registrandoPago || !metodoPago">
+                  @if (registrandoPago) {
+                    Registrando pago...
+                  } @else {
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8">
+                      <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                    Confirmar pago completo
+                  }
+                </button>
+              </form>
+            </section>
+          } @else {
+            <div class="paid-notice">
+              <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
+                <path d="m5 12 4 4L19 6"/>
+              </svg>
+              Esta factura ya ha sido pagada.
+            </div>
+          }
+
+        </div>
+      </section>
+    </div>
+  }
+
+</div>

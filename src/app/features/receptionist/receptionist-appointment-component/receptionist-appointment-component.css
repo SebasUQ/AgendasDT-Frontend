@@ -1,0 +1,430 @@
+
+:host {
+  display: block;
+  min-width: 0;
+  color: #315d78;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.receptionist-appointments {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: 16px 30px 30px;
+  background: #fff;
+}
+
+.receptionist-appointments *,
+.receptionist-appointments *::before,
+.receptionist-appointments *::after {
+  box-sizing: border-box;
+}
+
+/* Encabezado */
+
+.page-heading {
+  margin-bottom: 26px;
+}
+
+.page-heading h1 {
+  margin: 0 0 8px;
+  color: #315f7d;
+  font-size: 27px;
+  line-height: 1.25;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #6889a2;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Panel de búsqueda */
+
+.patient-search-card {
+  padding: 25px;
+  margin-bottom: 32px;
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(49, 93, 120, 0.035);
+}
+
+.search-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 23px;
+}
+
+.search-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: #5688b3;
+  background: #e8f3f9;
+  border-radius: 13px;
+}
+
+.search-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.search-heading h2 {
+  margin: 0 0 6px;
+  color: #315f7d;
+  font-size: 20px;
+}
+
+.search-heading p {
+  margin: 0;
+  color: #7793a8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Campo y botón */
+
+.patient-search-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.document-field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.document-field label {
+  color: #416b89;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.document-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 13px;
+  color: #315d78;
+  background: #fff;
+  border: 1px solid #cbdfea;
+  border-radius: 8px;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.document-field input::placeholder {
+  color: #9aafbd;
+}
+
+.document-field input:focus {
+  border-color: #568bb4;
+  box-shadow: 0 0 0 3px rgba(86, 139, 180, 0.13);
+}
+
+
+.search-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: auto;
+  min-width: 165px;
+  min-height: 44px;
+  padding: 0 18px;
+
+  color: #ffffff !important;
+  background-color: #4d83aa;
+  border: 1px solid #4d83aa;
+  border-radius: 8px;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+
+  transition: background-color 0.2s ease;
+}
+
+.search-button svg {
+  display: block;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  color: #ffffff;
+  stroke: currentColor;
+}
+
+.search-button:hover:not(:disabled) {
+  background-color: #356a91;
+  border-color: #356a91;
+}
+
+.search-button:disabled {
+  color: #ffffff !important;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* Indicador de carga */
+
+.loading-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: search-spin 0.7s linear infinite;
+}
+
+@keyframes search-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Información del paciente */
+
+.patient-result {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  margin-top: 23px;
+  background: #f3faf7;
+  border: 1px solid #d2eae0;
+  border-radius: 10px;
+}
+
+.result-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #42947b;
+  background: #e0f2e9;
+  border-radius: 50%;
+}
+
+.result-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.patient-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #42947b;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.patient-result-info h3 {
+  margin: 0 0 9px;
+  color: #315f7d;
+  font-size: 17px;
+}
+
+.patient-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  color: #6889a2;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.patient-details strong {
+  color: #416b89;
+}
+
+.verified-badge {
+  padding: 7px 11px;
+  color: #38846e;
+  background: #e0f2e9;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Error de búsqueda */
+
+.search-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  margin-top: 18px;
+  color: #a54f4f;
+  background: #fff3f2;
+  border: 1px solid #f1d6d3;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.search-error svg {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+}
+
+/* Sección de agendamiento */
+
+.appointment-section {
+  min-width: 0;
+}
+
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 0 0 7px;
+  color: #315f7d;
+  font-size: 22px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #7793a8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.appointment-component-wrapper {
+  min-width: 0;
+}
+
+/*
+  El componente reutilizado conserva sus propios estilos.
+  Este contenedor solo controla su espacio dentro de la vista.
+*/
+
+/* Estado inicial */
+
+.appointment-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 230px;
+  padding: 30px 22px;
+  text-align: center;
+  background: #fbfdfe;
+  border: 1px dashed #cbdfea;
+  border-radius: 13px;
+}
+
+.placeholder-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 16px;
+  color: #598bb4;
+  background: #e8f3f9;
+  border-radius: 15px;
+}
+
+.placeholder-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.appointment-placeholder h3 {
+  margin: 0 0 9px;
+  color: #416b89;
+  font-size: 16px;
+}
+
+.appointment-placeholder p {
+  max-width: 390px;
+  margin: 0;
+  color: #8ba1b1;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Responsive */
+
+@media (max-width: 760px) {
+  .receptionist-appointments {
+    padding: 20px 16px;
+  }
+
+  .page-heading h1 {
+    font-size: 23px;
+  }
+
+  .patient-search-card {
+    padding: 18px;
+    margin-bottom: 26px;
+  }
+
+  .patient-search-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .patient-result {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .patient-result-info {
+    flex-basis: calc(100% - 60px);
+  }
+
+  .verified-badge {
+    margin-left: 55px;
+  }
+
+  .patient-details {
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+  }
+}
