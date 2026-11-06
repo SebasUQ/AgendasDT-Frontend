@@ -1,5 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { SessionService } from '../../../core/services/session.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -13,11 +12,6 @@ export class AppointmentComponent implements OnInit {
 
   specialties: specialty[] = [];
   professionals: professional[] = [];
-
-  //Usuario logueado
-
-  private userService = inject(SessionService);
-  usuario = this.userService.usuarioActual;
 
   @Input()
   paciente!: any;

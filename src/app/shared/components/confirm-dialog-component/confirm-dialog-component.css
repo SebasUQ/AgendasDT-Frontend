@@ -1,0 +1,130 @@
+/* Fondo oscuro que cubre toda la página */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+/* Cuadro principal */
+.dialog-container {
+  width: 420px;
+  max-width: calc(100% - 40px);
+
+  background-color: #ffffff;
+  border: 1px solid #777;
+  border-radius: 36px;
+
+  padding: 28px 38px 26px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Texto principal */
+.dialog-title {
+  margin: 0 0 15px;
+
+  font-size: 30px;
+  font-weight: 400;
+  color: #305B73;
+
+  line-height: 1.2;
+}
+
+/* Texto secundario */
+.dialog-message {
+  margin: 0 0 15px;
+
+  font-size: 20px;
+  color: #555;
+
+  line-height: 1.4;
+}
+
+/* separador */
+.separator {
+
+  width: 100%;
+  height: 2px;
+
+  margin: 0 5px 22px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #A6D0E7,
+      transparent
+    );
+}
+
+/* Contenedor de botones */
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 26px;
+}
+
+/* Estilo general de los botones */
+.dialog-button {
+  min-width: 95px;
+  padding: 8px 16px;
+
+  border-radius: 9px;
+  border: 1px solid #777;
+
+  font-size: 18px;
+  color: white;
+
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.dialog-button:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+/* Botón de cancelar */
+.cancel-button {
+  background-color: #000000;
+}
+
+/* Botón de confirmar */
+.confirm-button {
+  background-color: #ff0000;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 480px) {
+  .dialog-container {
+    padding: 24px;
+    border-radius: 26px;
+  }
+
+  .dialog-title {
+    font-size: 26px;
+  }
+
+  .dialog-message {
+    font-size: 18px;
+  }
+
+  .dialog-actions {
+    gap: 12px;
+  }
+
+  .dialog-button {
+    font-size: 17px;
+    min-width: 0;
+  }
+}

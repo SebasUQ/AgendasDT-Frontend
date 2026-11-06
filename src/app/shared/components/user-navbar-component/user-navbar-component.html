@@ -44,7 +44,7 @@
 
 
       <span class="user-name">
-                {{usuario().nombre}} - {{userRole}}
+                {{nombre()}} - {{userRole}}
             </span>
 
     </div>
@@ -57,7 +57,7 @@
     <button
       type="button"
       class="logout-button"
-      (click)="logout()"
+      (click)="mostrarDialogo = true"
     >
 
       <svg
@@ -96,11 +96,19 @@
       </svg>
 
 
-      <span>
-                Cerrar sesión
-            </span>
+      <span>Cerrar sesión</span>
 
     </button>
+
+    <app-confirm-dialog-component
+    [visible]="mostrarDialogo"
+    titulo="¿Cerrar sesión?"
+    mensaje="Esta acción lo regresara a la pagina inicial"
+    textoBotonCancelar="Cancelar"
+    textoBotonConfirmar="Cerrar sesión"
+    (cancelado)="cerrarDialogo()"
+    (confirmado)="logout()"
+    />
 
   </div>
 

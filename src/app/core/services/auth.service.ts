@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AuthResponse, LoginRequest, RegisterRequest, Rol, User } from '../models/auth.model';
+import { AuthResponse, LoginRequest, RegisterRequest, User } from '../models/auth.model';
+import { Rol } from '../models/rol.enum';
 
 const TOKEN_KEY = 'dt_token';
 const USER_KEY = 'dt_user';
@@ -36,7 +37,7 @@ export class AuthService {
       localStorage.removeItem(USER_KEY);
     } catch {}
     this._usuario.set(null);
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/']);
   }
 
   getToken(): string | null {
@@ -54,19 +55,25 @@ export class AuthService {
 
   rutaInicial(rol: Rol): string {
     switch (rol) {
-      case 'Paciente':
+      case Rol.Paciente:
         return '/patient-dashboard';
-      case 'Recepcionista':
+      case Rol.Recepcionista:
         return '/receptionist-dashboard';
-      case 'Odontologo':
+      case Rol.Odontologo:
         return '/dentist-dashboard';
-      case 'Administrador':
+      case Rol.Administrador:
         return '/admin';
     }
   }
 
   private guardarSesion(res: AuthResponse) {
-    const usuario: User = { nombre: res.nombre, email: res.email, rol: res.rol };
+    const usuario: User = {
+      nombre: res.nombre,
+      email: res.email,
+      rol: res.rol,
+      ID: res.ID,
+      phone: res.phone
+    };
     try {
       localStorage.setItem(TOKEN_KEY, res.token);
       localStorage.setItem(USER_KEY, JSON.stringify(usuario));

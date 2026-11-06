@@ -272,7 +272,7 @@ body {
    INPUTS
    ========================================================= */
 
-.form-group input[type="text"],
+.form-group input[type="email"],
 .form-group input[type="password"]{
 
   width: 100%;
@@ -316,6 +316,10 @@ body {
 
   box-shadow:
     0 0 0 3px rgba(128, 171, 201, 0.20);
+}
+
+.error{
+  color:red;
 }
 
 
@@ -542,12 +546,6 @@ body {
     translateX(-50%)
     translateY(-3px);
 }
-
-/* =========================================================
-   CAMPO DE CONTRASEÑA
-   ========================================================= */
-
-
 
 /* =========================================================
    RESPONSIVE

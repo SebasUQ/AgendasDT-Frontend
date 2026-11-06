@@ -41,7 +41,7 @@
 
 
     <!-- Formulario -->
-    <form class="register-form">
+    <form [formGroup]="form" (ngSubmit)="enviar()" class="register-form">
 
 
       <!-- =========================================
@@ -52,23 +52,45 @@
 
         <div class="form-group">
 
-          <label for="fullName">
-            Nombres y apellidos
+          <label for="name">
+            Nombre(s)
           </label>
 
           <input
             type="text"
-            id="fullName"
-            name="fullName"
-            placeholder="Ingresa tu nombre completo"
+            id="nombre"
+            name="Name"
+            formControlName="nombre"
+            placeholder="Ingresa tu(s) nombre(s)"
             autocomplete="name"
             required
           >
+          @if (form.controls.nombre.touched && form.controls.nombre.invalid) {
+            <small class="error">Por favor ingresa al menos un nombre</small>
+          }
 
         </div>
 
+        <div class="form-group">
 
-        <!-- DOCUMENTO -->
+          <label for="lastName">
+            Apellidos
+          </label>
+
+          <input
+            type="text"
+            id="apellido"
+            name="lastName"
+            formControlName="apellido"
+            placeholder="Ingresa tus apellidos"
+            autocomplete="name"
+            required
+          >
+          @if (form.controls.apellido.touched && form.controls.apellido.invalid) {
+            <small class="error">Por favor ingresa al menos un apellido</small>
+          }
+
+        </div>
 
         <div class="form-group">
 
@@ -78,14 +100,38 @@
 
           <input
             type="text"
-            id="document"
+            id="documento"
             name="document"
+            formControlName="documento"
             inputmode="numeric"
             pattern="[0-9]+"
             maxlength="15"
             placeholder="Número de documento"
             required
           >
+          @if (form.controls.documento.touched && form.controls.documento.invalid) {
+            <small class="error">Ingresa tu numero de documento / identificación</small>
+          }
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="birthDate">
+            Fecha de nacimiento
+          </label>
+
+          <input
+            type="date"
+            id="fechaNacimiento"
+            name="fechaNacimiento"
+            formControlName="fechaNacimiento"
+            inputmode="text"
+            required
+          >
+          @if (form.controls.fechaNacimiento.touched && form.controls.fechaNacimiento.invalid) {
+            <small class="error">Por favor especifica tu fecha de nacimiento</small>
+          }
 
         </div>
 
@@ -108,9 +154,13 @@
             type="email"
             id="email"
             name="email"
+            formControlName="email"
             placeholder="correo@ejemplo.com"
             autocomplete="email"
           >
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="error">Ingresa un correo válido</small>
+          }
 
         </div>
 
@@ -125,8 +175,9 @@
 
           <input
             type="tel"
-            id="phone"
+            id="telefono"
             name="phone"
+            formControlName="telefono"
             placeholder="+57 300 123 4567"
             autocomplete="tel"
             inputmode="tel"
@@ -153,10 +204,14 @@
             type="password"
             id="password"
             name="password"
+            formControlName="password"
             placeholder="Ingresa una contraseña"
             autocomplete="new-password"
             required
           >
+          @if (form.controls.password.touched && form.controls.password.invalid) {
+            <small class="error">La contraseña es necesaria</small>
+          }
 
         </div>
 
@@ -173,10 +228,14 @@
             type="password"
             id="confirmPassword"
             name="confirmPassword"
+            formControlName="confirmPassword"
             placeholder="Repite tu contraseña"
             autocomplete="new-password"
             required
           >
+          @if (form.controls.confirmPassword.touched && form.hasError('passwordsNoCoinciden')) {
+            <small class="error">Las contraseñas no coinciden</small>
+          }
 
         </div>
 
@@ -199,16 +258,15 @@
             required
           >
 
-          <span>
-                            Acepto los
-                            <a href="#" class="agreement-link">
-                                Términos de Servicio
-                            </a>
-                            y
-                            <a href="#" class="agreement-link">
-                                Políticas de Privacidad
-                            </a>
-                        </span>
+          <span> Acepto los
+            <a href="#" class="agreement-link">
+              Términos de Servicio
+            </a>
+            y
+            <a href="#" class="agreement-link">
+              Políticas de Privacidad
+            </a>
+          </span>
 
         </label>
 
@@ -224,10 +282,7 @@
             required
           >
 
-          <span>
-                            Autorizo el tratamiento de mis
-                            datos personales (Habeas Data)
-                        </span>
+          <span>Autorizo el tratamiento de mis datos personales (Habeas Data)</span>
 
         </label>
 
@@ -238,11 +293,16 @@
            BOTÓN
            ========================================= -->
 
+      @if (error()) {
+        <p class="error">{{ error() }}</p>
+      }
+
       <button
         type="submit"
         class="register-button"
+        [disabled]="cargando()"
       >
-        Completar registro
+        {{ cargando() ? 'Ingresando...' : 'Completar registro' }}
       </button>
 
     </form>

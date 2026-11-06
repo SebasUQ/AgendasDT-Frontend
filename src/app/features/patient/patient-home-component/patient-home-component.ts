@@ -13,19 +13,21 @@ export class PatientHomeComponent {
   //Usuario logueado
 
   private sessionService = inject(SessionService);
-  usuario = this.sessionService.usuarioActual;
+  protected User = this.sessionService.usuario;
+  protected email = this.sessionService.email;
+  protected phone = this.sessionService.phone;
 
   // Valores originales para detectar modificaciones
 
-  private correoOriginal: string = this.usuario().correo;
+  private correoOriginal: string = this.email();
 
-  private telefonoOriginal: string = this.usuario().phone;
+  private telefonoOriginal: string = this.phone();
 
   // Campos editables
 
-  correo: string = this.usuario().correo;
+  correo: string = this.email();
 
-  telefono: string = this.usuario().phone;
+  telefono: string = this.phone();
 
   // ============================
   // CITA ACTUAL
@@ -52,21 +54,7 @@ export class PatientHomeComponent {
   // ============================
 
   actualizarDatos(): void {
-    if (!this.datosModificados) {
-      return;
-    }
 
-    const usuarioActual = this.sessionService.usuarioActual();
-
-    const usuarioActualizado = {
-      ...usuarioActual,
-
-      correo: this.correo,
-
-      phone: this.telefono,
-    };
-
-    this.sessionService.actualizarUsuario(usuarioActualizado);
   }
 
   // ============================

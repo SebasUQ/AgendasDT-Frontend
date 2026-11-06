@@ -239,7 +239,7 @@
           <input
             id="nombre"
             type="text"
-            [value]="usuario().nombre"
+            [value]= User()?.nombre
             readonly
           />
 
@@ -261,7 +261,7 @@
           <input
             id="documento"
             type="text"
-            [value]="usuario().id"
+            [value]= "User()?.ID"
             readonly
           />
 
@@ -283,7 +283,7 @@
           <input
             id="correo"
             type="email"
-            [(ngModel)]="correo"
+            [(ngModel)]= "correo"
           />
 
           <span class="edit-icon">
