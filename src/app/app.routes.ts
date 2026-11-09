@@ -21,12 +21,27 @@ import {
 } from './features/receptionist/receptionist-appointment-component/receptionist-appointment-component';
 import { roleGuard } from './core/guards/role.guard';
 import { authGuard } from './core/guards/auth.guard';
+import { AcercaDeComponent } from './pages/home-page-component/acerca-de-component/acerca-de-component';
+import { ObjetivosComponent } from './pages/home-page-component/objetivos-component/objetivos-component';
+import { ContactoComponent } from './pages/home-page-component/contacto-component/contacto-component';
 
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    component: HomePageComponent
+  },
+  {
+    path: 'acerca-de',
+    component: AcercaDeComponent
+  },
+  {
+    path: 'objetivos',
+    component: ObjetivosComponent
+  },
+  {
+    path: 'contacto',
+    component: ContactoComponent
   },
   {
     path: 'auth/login',

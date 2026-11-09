@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavbarComponent} from '../../shared/components/navbar-component/navbar-component';
+import { AcercaDeComponent} from './acerca-de-component/acerca-de-component';
 
 @Component({
   imports: [NavbarComponent],

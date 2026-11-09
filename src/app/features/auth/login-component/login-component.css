@@ -29,16 +29,15 @@ body {
 
 body {
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: inherit;
   color: #305B73;
-
   background: #80ABC9;
+
 }
 
+.navbar {
+  width: 100%;
+}
 
 /* =========================================================
    PÁGINA
@@ -46,7 +45,7 @@ body {
 
 .login-page {
 
-  position: absolute;
+  position: relative;
 
   width: 100%;
   min-height: 100vh;
@@ -56,7 +55,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: 90px 20px;
+  flex-direction: column;
+
+  padding: 0 20px 20px;
 
   overflow: hidden;
 

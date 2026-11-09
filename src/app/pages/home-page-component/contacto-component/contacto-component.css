@@ -1,0 +1,292 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  font-family: inherit;
+  color: #263b50;
+}
+
+.navbar{
+  width: 100%;
+}
+
+.contact-page {
+  background-image: url("/fondo.jpg");
+  padding: 0 35px 50px;
+
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Encabezado */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  display: inline-block;
+  color: #263b50;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.page-header h1 {
+  color: #24415e;
+  font-size: 34px;
+  margin: 0;
+}
+
+.page-header p {
+  color: #304D60;
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+/* Información académica */
+
+.academic-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 5px 22px rgba(48, 95, 140, 0.07);
+  margin-bottom: 50px;
+}
+
+.academic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  background: #e8f3ff;
+  color: #3789db;
+  border-radius: 15px;
+}
+
+.academic-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.academic-content h2 {
+  font-size: 24px;
+  color: #24415e;
+  margin: 8px 0 15px;
+}
+
+.academic-content p {
+  color: #718399;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.academic-tag {
+  display: inline-block;
+  background: #eaf4ff;
+  color: #357bb9;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 15px;
+  border-radius: 20px;
+}
+
+/* Equipo */
+
+.team-section {
+  margin-bottom: 45px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  color: #24415e;
+  font-size: 27px;
+  margin: 0 0 10px;
+}
+
+.section-heading p {
+  color: #304D60;
+  font-size: 14px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* Tarjetas */
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  padding: 30px 22px;
+  border-radius: 16px;
+  border: 1px solid #e7eef5;
+  box-shadow: 0 4px 18px rgba(48, 95, 140, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(48, 95, 140, 0.12);
+}
+
+/* Avatar */
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  height: 85px;
+  background: linear-gradient(135deg, #eaf5ff, #d5eaff);
+  border-radius: 50%;
+  color: #3789db;
+  margin-bottom: 20px;
+}
+
+.profile-avatar svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.team-card h3 {
+  font-size: 17px;
+  color: #2c4965;
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.member-role {
+  color: #3789db;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.member-divider {
+  width: 45px;
+  height: 2px;
+  background: #d8eaff;
+  margin: 20px 0;
+}
+
+/* Correo */
+
+.member-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #718399;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.member-email:hover {
+  color: #3789db;
+}
+
+.member-email svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Pie */
+
+.contact-footer {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.footer-line {
+  width: 500px;
+  height: 3px;
+  background: #B9D9E6;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+}
+
+.contact-footer p {
+  font-size: 13px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.contact-footer span {
+  color: #94a5b6;
+  font-size: 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .contact-page {
+    padding: 30px 18px;
+  }
+
+  .page-header h1 {
+    font-size: 27px;
+  }
+
+  .academic-section {
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card:last-child {
+    grid-column: auto;
+  }
+}

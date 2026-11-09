@@ -1,0 +1,248 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  font-family: inherit;
+  color: #263b50;
+}
+
+.navbar{
+  width: 100%;
+}
+
+.about-page {
+  background-image: url("/fondo.jpg");
+  padding: 0 35px 60px;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Encabezado */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-label {
+  display: inline-block;
+  color: #304D60;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.page-header h1 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #24415e;
+  margin: 0;
+}
+
+.page-header h1 span {
+  color: #263b50;
+}
+
+.header-description {
+  color: #263b50;
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+/* Presentación */
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: center;
+  gap: 40px;
+  background: white;
+  padding: 38px;
+  border-radius: 18px;
+  box-shadow: 0 5px 22px rgba(48, 95, 140, 0.07);
+  margin-bottom: 55px;
+}
+
+.intro-content h2 {
+  font-size: 25px;
+  line-height: 1.4;
+  color: #24415e;
+  margin: 0 0 20px;
+}
+
+.intro-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #667b90;
+  margin-bottom: 14px;
+}
+
+/* Decoración */
+
+.intro-decoration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  background: linear-gradient(135deg, #eaf5ff, #d4eaff);
+  border-radius: 15px;
+}
+
+.decoration-circle {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(43, 121, 194, 0.15);
+}
+
+.tooth-icon {
+  font-size: 65px;
+  color: #3789db;
+}
+
+.decoration-caption {
+  color: #357bb9;
+  font-weight: 600;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+/* Funcionalidades */
+
+.features-section {
+  margin-top: 20px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  color: #24415e;
+  font-size: 27px;
+  margin: 0 0 10px;
+}
+
+.section-heading p {
+  color: #304D60;
+  font-size: 14px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  background: white;
+  padding: 25px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(48, 95, 140, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(48, 95, 140, 0.12);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.feature-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calendar-icon {
+  color: #3789db;
+  background: #e8f3ff;
+}
+
+.clinical-icon {
+  color: #37a6a0;
+  background: #e5f8f5;
+}
+
+.finance-icon {
+  color: #9a79d3;
+  background: #f0eaff;
+}
+
+.inventory-icon {
+  color: #e39a45;
+  background: #fff3e3;
+}
+
+.feature-card h3 {
+  font-size: 17px;
+  color: #2c4965;
+  margin: 0 0 10px;
+}
+
+.feature-card p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #718399;
+  margin: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-decoration {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page {
+    padding: 30px 18px;
+  }
+
+  .page-header h1 {
+    font-size: 27px;
+  }
+
+  .about-intro {
+    padding: 25px;
+  }
+
+  .intro-content h2 {
+    font-size: 21px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
